@@ -15,7 +15,7 @@ export const LoginSection = ({ title }) => {
 
         if (result.success) {
             localStorage.setItem("x-acess-token", result.data.token)
-            return navigate("/dashboard")
+            return navigate('/dashboard-trabajador')
         }
 
         setButtonState(false)
