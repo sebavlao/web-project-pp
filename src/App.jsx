@@ -3,12 +3,10 @@ import { Home } from './pages/Home'
 import { Login } from './pages/Login'
 import { RegisterClient } from './pages/RegisterClient'
 import { RegisterWorker } from './pages/RegisterWorker'
-import WorkerDashboard from './pages/private/WorkerDashboard';
-import { WorkProvider } from './context/WorkContext';
+import {WorkerDashboard} from './pages/private/WorkerDashboard';
 
 function App() {
   return (
-    <WorkProvider>
     <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home></Home>}/>
@@ -18,7 +16,7 @@ function App() {
           <Route path='/dashboard-trabajador' element={<WorkerDashboard/>}/>
         </Routes>
     </BrowserRouter>
-    </WorkProvider>
+    
   )
 }
 
