@@ -84,7 +84,6 @@ export const WorkProvider = ({ children }) => {
         const data = await response.json();
 
         setTrabajos(data); 
-        setLoading(false); 
       } catch (err) {
        
       }
@@ -95,7 +94,7 @@ export const WorkProvider = ({ children }) => {
 */
 
   return (
-    <WContext.Provider value={{ trabajos, loading }}>
+    <WContext.Provider value={{trabajos}}>
       {children}
     </WContext.Provider>
   );

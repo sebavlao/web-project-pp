@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const TarjetaDeTrabajo = ({ titulo, imagen, categoria, descripcion }) => {
+const WorkCard = ({ titulo, imagen, categoria, descripcion }) => {
   return (
       <div className="bg-white rounded-lg shadow-md p-4 mb-4">
         <img src={imagen} alt={titulo} className="w-full h-48 object-cover rounded-t-lg" />
@@ -12,4 +12,4 @@ const TarjetaDeTrabajo = ({ titulo, imagen, categoria, descripcion }) => {
     );
 };
 
-export default TarjetaDeTrabajo;
+export default WorkCard;

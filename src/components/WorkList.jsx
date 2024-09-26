@@ -2,20 +2,20 @@ import React from 'react';
 import WorkCard from './WorkCard';
 
 
-const ListaDeTrabajos = ({ trabajos }) => {
+const WorkList = ({ works }) => {
   return (
     <div className="w-full max-w-4xl mx-auto">
-      {trabajos.map((trabajo, index) => (
+      {works.map((work, index) => (
         <WorkCard
           key={index}
-          titulo={trabajo.titulo}
-          imagen={trabajo.imagen}
-          categoria={trabajo.categoria}
-          descripcion={trabajo.descripcion}
+          titulo={work.titulo}
+          imagen={work.imagen}
+          categoria={work.categoria}
+          descripcion={work.descripcion}
         />
       ))}
     </div>
   );
 };
 
-export default ListaDeTrabajos;
+export default WorkList;
