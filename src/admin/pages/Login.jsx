@@ -9,15 +9,16 @@ import { Navigate } from 'react-router-dom';
 export default function LoginAdmin() {
   const [form, setForm] = useState();
   const [errorText, setErrorText] = useState(<></>);
-  const { token, setToken } = useContext(AuthAdminContext);
+  const { setToken, setRole } = useContext(AuthAdminContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const serverResponse = await fetchWithBody(endpoints.authAdmin, "POST", form);
-
+    
     (!serverResponse.token) ? setErrorText(<p style={{color: 'red', fontSize: '.8rem', textAlign: 'center'}}>Datos incorrectos.</p>) : setErrorText(<></>);
 
     if (serverResponse.token) { setToken(serverResponse.token) };
+    if (serverResponse.role) { setRole(serverResponse.role) }
   }
 
   const handleInput = (e) => {

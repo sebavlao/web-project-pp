@@ -7,6 +7,8 @@ import {WorkerDashboard} from './pages/private/WorkerDashboard';
 import LoginAdmin from './admin/pages/Login'
 import AuthAdminProvider from './admin/hooks/useAuth'
 import AdminDashboard from './admin/pages/AdminDashboard'
+import AdminLayout from './admin/components/LayoutAdmin'
+import AdminProfile from './admin/pages/AdminProfile'
 
 function App() {
   return (
@@ -19,7 +21,9 @@ function App() {
             <Route path='/registro-trabajador' element={<RegisterWorker/>}/>
             <Route path='/dashboard-trabajador' element={<WorkerDashboard/>}/>
             <Route path='/admin-login' element={<LoginAdmin />}/>
-            <Route path='/admin' element={<AdminDashboard />}/>
+            <Route path='/admin' element={<AdminLayout></AdminLayout>}>
+              <Route index element={<AdminDashboard></AdminDashboard>}></Route>
+            </Route>
           </Routes>
       </BrowserRouter>
     </AuthAdminProvider>
