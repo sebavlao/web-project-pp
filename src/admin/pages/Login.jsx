@@ -9,7 +9,7 @@ import { Navigate } from 'react-router-dom';
 export default function LoginAdmin() {
   const [form, setForm] = useState();
   const [errorText, setErrorText] = useState(<></>);
-  const { setToken, setRole } = useContext(AuthAdminContext);
+  const { token, setToken, setRole } = useContext(AuthAdminContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,22 +25,26 @@ export default function LoginAdmin() {
     setForm({...form, [e.target.name]: e.target.value});
   }
 
-    return (
-      <div style={styles.container}>
-          <form method="POST" onSubmit={handleSubmit} style={styles.form}>
-              {/* name */}
-              <TextField id="outlined-basic" label="Usuario" variant="outlined" name='username' onChange={handleInput}/>
-             
-             {/* password */}
-              <InputPassword handleInput={handleInput}></InputPassword>
-              
-              {/* posible error */}
-              { errorText }
-              {/* submit */}
-              <Button variant="outlined" type='submit'>Iniciar sesión</Button>
-          </form>
-      </div>
-    )
+    if (token) {
+      return <Navigate to={'/admin'}/>
+    } else {
+      return (
+        <div style={styles.container}>
+            <form method="POST" onSubmit={handleSubmit} style={styles.form}>
+                {/* name */}
+                <TextField id="outlined-basic" label="Usuario" variant="outlined" name='username' onChange={handleInput}/>
+               
+               {/* password */}
+                <InputPassword handleInput={handleInput}></InputPassword>
+                
+                {/* posible error */}
+                { errorText }
+                {/* submit */}
+                <Button variant="outlined" type='submit'>Iniciar sesión</Button>
+            </form>
+        </div>
+      )
+    }
 }
 
 

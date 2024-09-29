@@ -34,11 +34,12 @@ export default function AdminLayout() {
 
 function ViewAdminAuth() {
     return (
-        <div style={{backgroundColor: 'lightblue'}}>
-            <button>Prueba de que comparte</button>
+        <div>
             <Header></Header>
-            <SideBar></SideBar>
-            <Outlet></Outlet>
+            <div style={{display: 'flex'}}>
+                <SideBar></SideBar>
+                <Outlet></Outlet>
+            </div>
         </div>
     )
 }

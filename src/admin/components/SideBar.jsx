@@ -9,11 +9,14 @@ export default function SideBar() {
     }, [])
 
     return (
-        <div>
+        <div style={{backgroundColor: 'lightgray', flex: '0 0 15%'}}>
             <a href="">Ver usuarios</a>
             {
                 role === "superadmin" && (
-                    <a>Ver admins</a>
+                    <>
+                    <br />
+                    <a href='/admin'>Ver admins</a>
+                    </>
                 )
             }
         </div>
