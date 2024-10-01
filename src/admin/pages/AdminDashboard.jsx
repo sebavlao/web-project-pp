@@ -21,10 +21,11 @@ export default function AdminDashboard() {
             let json = await res.json();
             let rows = await json.map(user => {
                 return {
-                    userId: <a href={"/admin/user/" + user.userId}><AccountCircle /> Ver Perfil</a>,
+                    userId: <a href={"/admin/user/" + user._id}><AccountCircle /> Ver Perfil</a>,
                     username: user.username,
                     email: user.email,
-                    verified: user.verified ? '✅' : '❌'
+                    verified: user.verified ? '✅' : '❌',
+                    type: user.userType
                 }
             })
             setOriginalData(rows)
@@ -44,22 +45,21 @@ export default function AdminDashboard() {
 
     return (
         <div style={{backgroundColor: variablesCSS.mainColor, width: '100%', minHeight: '100vh', maxHeight: '100%'}}>
-            <div className="header-form" style={{display: 'block', width: '60%', margin: 'auto', marginTop: '2rem'}}>
-            <TextField
-                id="standard-search"
-                label="Buscar por usuario o email"
-                type="search"
-                variant="standard"
-                onChange={findUser}
-                sx={{color: 'white', borderBottom: 'thin solid grey', input: {
-                    color: 'whitesmoke',
-                    padding: '.3rem',
-                    fontSize: '.8rem',
-                    "&::placeholder": {
-                        color: 'white'
-                    }
-                }, label: { color: 'whitesmoke', fontSize: '.8rem' } }}
-            />
+            <div className="container-seach" style={{width: '60%', margin: 'auto', marginTop: '1rem', display: 'flex'}}>
+                <TextField
+                    id="standard-search"
+                    label="Buscar por usuario o email"
+                    type="search"
+                    variant="standard"
+                    onChange={findUser}
+                    sx={{color: 'white', borderBottom: 'thin solid grey', input: {
+                        color: 'whitesmoke',
+                        fontSize: '.8rem',
+                        "&::placeholder": {
+                            color: 'white'
+                        }
+                    }, label: { color: 'whitesmoke', fontSize: '.8rem' } }}
+                />
             </div>
             <div className="table" style={{width: '60%', margin: 'auto', backgroundColor: variablesCSS.mainColor, paddingBottom: '2rem', paddingTop: '.5rem'}}>
                 <DataTable 
@@ -81,22 +81,27 @@ const columns = [
     {
         name: "",
         selector: row => row.userId,
-        width: '180px'
+        width: '20%'
     },
     {
         name: "Nombre de usuario",
         selector: row => row.username,
-        width: '180px',
+        width: '20%',
     },
     {
         name: "Email",
         selector: row => row.email,
-        width: '180px'
+        width: '20%'
+    },
+    {
+        name: "Tipo",
+        selector: row => row.type,
+        width: '20%'
     },
     {
         name: "Verificado",
         selector: row => row.verified,
-        width: '180px'
+        width: '20%'
     }
 ]
 

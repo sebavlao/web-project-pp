@@ -9,6 +9,7 @@ import AuthAdminProvider from './admin/hooks/useAuth'
 import AdminDashboard from './admin/pages/AdminDashboard'
 import AdminLayout from './admin/components/LayoutAdmin'
 import AdminProfile from './admin/pages/AdminProfile'
+import InfoUser from './admin/pages/InfoUser'
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
             <Route path='/admin-login' element={<LoginAdmin />}/>
             <Route path='/admin' element={<AdminLayout />}>
               <Route index element={<AdminDashboard></AdminDashboard>} />
-              <Route path='/admin/user/:id' element={<div style={{height: '100vh', color: 'white'}}>Usuario numero...</div>} />
+              <Route path='/admin/user/:id' element={<InfoUser></InfoUser>} />
               <Route path='/admin/profile' element={<AdminProfile></AdminProfile>} />
             </Route>
           </Routes>

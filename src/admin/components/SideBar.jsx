@@ -15,7 +15,7 @@ export default function SideBar() {
             <OptionBar path={'/admin/profile'} text={'Mi perfil'} />
             {
                 role === "superadmin" && (
-                    <OptionBar path={'/superadmin'}/>
+                    <OptionBar path={'/superadmin'} text={'Ver admins'}/>
                 )
             }
         </div>
