@@ -1,24 +1,25 @@
 import { Input } from "../Input"
-import { login } from "../../data/login"
+import { loginData } from "../../data/loginData"
 import { Button } from "../Button"
-import { useLogin } from "../../hooks/useLogin"
+import { useAuth } from "../../hooks/useAuth"
 import { useNavigate } from "react-router-dom"
+import { useFormHandle } from "../../hooks/useFormHandle"
 
 export const LoginSection = ({ title }) => {
-    const { buttonState, setButtonState, sendLogin, inputsHandle } = useLogin()
+    const { login } = useAuth()
+    const {form, buttonStateDisabled, inputsHandle, setIsLoading} = useFormHandle(loginData.initialValues)
     const navigate = useNavigate()
 
     const handleSubmit = async e => {
         e.preventDefault()
-        setButtonState(true)
-        const result = await sendLogin()
+        setIsLoading(true)
+        const result = await login(form)
 
         if (result.success) {
-            localStorage.setItem("x-acess-token", result.data.token)
-            return navigate('/dashboard-trabajador')
+            return result.role === "worker" ?  navigate('/dashboard-trabajador') : navigate('/dashboard-cliente')
         }
 
-        setButtonState(false)
+        setIsLoading(false)
 
         // se podría agregar manejo de errores, el error se guarda en result.error
     }
@@ -31,11 +32,11 @@ export const LoginSection = ({ title }) => {
             >
                 <h1 className="flex justify-center font-bold text-3xl">{title}</h1>
                 <ul className="grid grid-cols-1 gap-4">
-                    {login.inputs.map((input, index) => (
+                    {loginData.inputs.map((input, index) => (
                         <Input handle={inputsHandle} key={`input-${index}`} labelName={input.label} {...input.input}/>
                     ))}
                 </ul>
-                <Button disabledState={buttonState} title="Loguearse"/>
+                <Button disabledState={buttonStateDisabled} title="Loguearse"/>
             </form>
         </section>
     )

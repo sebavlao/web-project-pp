@@ -3,7 +3,7 @@ import { AuthContext } from "../context/AuthContext"
 import { API_USER } from "../api/api"
 
 export const useAuth = () => {
-    const { auth } = useContext(AuthContext)
+    const auth = useContext(AuthContext)
 
     const login = async form => {
         try {
