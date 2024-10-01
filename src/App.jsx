@@ -21,8 +21,8 @@ function App() {
             <Route path='/registro-trabajador' element={<RegisterWorker/>}/>
             <Route path='/dashboard-trabajador' element={<WorkerDashboard/>}/>
             <Route path='/admin-login' element={<LoginAdmin />}/>
-            <Route path='/admin' element={<AdminLayout></AdminLayout>}>
-              <Route index element={<AdminDashboard></AdminDashboard>}></Route>
+            <Route path='/admin' element={<AdminLayout />}>
+              <Route index element={<AdminDashboard></AdminDashboard>} />
             </Route>
           </Routes>
       </BrowserRouter>

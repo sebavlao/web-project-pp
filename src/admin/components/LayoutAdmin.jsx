@@ -4,6 +4,7 @@ import SideBar from "./SideBar"
 import { useState, useContext, useEffect } from "react"
 import { AuthAdminContext } from "../hooks/useAuth"
 import { Navigate } from "react-router-dom"
+import variablesCSS from "../styles/variablescss"
 
 export default function AdminLayout() {
     const { token } = useContext(AuthAdminContext);
@@ -36,7 +37,7 @@ function ViewAdminAuth() {
     return (
         <div>
             <Header></Header>
-            <div style={{display: 'flex'}}>
+            <div style={{display: 'flex', backgroundColor: variablesCSS.mainColor}}>
                 <SideBar></SideBar>
                 <Outlet></Outlet>
             </div>

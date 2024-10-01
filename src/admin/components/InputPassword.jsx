@@ -22,11 +22,16 @@ export default function InputPassword({ handleInput }) {
 
   return (
       <div>
-        <FormControl variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">Contraseña</InputLabel>
+        <FormControl variant="outlined" sx={{marginTop: '1rem'}}>
+          <InputLabel htmlFor="outlined-adornment-password" sx={{color: 'white'}}>Contraseña</InputLabel>
           <OutlinedInput
             id="outlined-adornment-password"
             type={showPassword ? 'text' : 'password'}
+            sx={{
+              input: {
+                color: 'white'
+              }
+            }}
             onChange={handleInput}
             name={'password'}
             endAdornment={
@@ -37,6 +42,9 @@ export default function InputPassword({ handleInput }) {
                   onMouseDown={handleMouseDownPassword}
                   onMouseUp={handleMouseUpPassword}
                   edge="end"
+                  sx={{
+                    color: 'white'
+                  }}
                 >
                   {showPassword ? <VisibilityOff /> : <Visibility />}
                 </IconButton>

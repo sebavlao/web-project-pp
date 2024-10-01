@@ -32,15 +32,28 @@ export default function LoginAdmin() {
         <div style={styles.container}>
             <form method="POST" onSubmit={handleSubmit} style={styles.form}>
                 {/* name */}
-                <TextField id="outlined-basic" label="Usuario" variant="outlined" name='username' onChange={handleInput}/>
-               
+                <TextField id="outlined-basic" label="Usuario" borderColor='white' variant="outlined" name='username' onChange={handleInput} sx={{
+                input: {
+                  color: 'whitesmoke',
+                  "&::placeholder": {    
+                      opacity: .5,
+                      color: 'white'
+                  }
+                },
+                "& .MuiInputBase-root.Mui-disabled": {
+                    "& > fieldset": {
+                        borderColor: "white"
+                    }
+                },
+                label: { color: 'white' }
+               }} /> 
                {/* password */}
                 <InputPassword handleInput={handleInput}></InputPassword>
                 
                 {/* posible error */}
                 { errorText }
                 {/* submit */}
-                <Button variant="outlined" type='submit'>Iniciar sesión</Button>
+                <Button variant="outlined" type='submit' sx={{marginTop: '1.1rem'}}>Iniciar sesión</Button>
             </form>
         </div>
       )
@@ -54,14 +67,16 @@ const styles = {
         display: 'flex',
         flexDirection: 'column',
         padding: '1rem',
-        backgroundColor: 'orange'
+        backgroundColor: '#3d444d',
+        borderRadius: '.5rem',
+        boxShadow: '0px 25px 20px -20px #1976d2'
     },
     container: {
-      backgroundColor: 'white',
       height: '100vh',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      backgroundColor: '#24292e'
   }
 }

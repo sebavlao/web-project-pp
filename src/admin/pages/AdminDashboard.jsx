@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react"
 import DataTable from "react-data-table-component"
 import { AuthAdminContext } from "../hooks/useAuth"
-import { Verified } from "@mui/icons-material";
+import variablesCSS from "../styles/variablescss";
 
 export default function AdminDashboard() {
     const { token } = useContext(AuthAdminContext);
@@ -12,7 +12,7 @@ export default function AdminDashboard() {
         const getUsers = async () => {
             let res = await fetch("http://localhost:5000/api/admin/user_info", {
                 headers: {
-                    'x-access-token': token
+                    'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmYwOGU1NTcxZjQxYzczNTk0N2I2MzciLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlclR5cGUiOiJhZG1pbiIsImlhdCI6MTcyNzY5NDAxOCwiZXhwIjoxNzI3NzgwNDE4fQ.-2eEysOE3Af2-WCh7x4mWhKuy3nonaRrqnpN3clwrjA'
                 }
             });
             let json = await res.json();
@@ -32,8 +32,7 @@ export default function AdminDashboard() {
     }, [])
 
     return (
-        <div style={{backgroundColor: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', height: '100vh'}}>
-            Dashboard admin
+        <div style={{backgroundColor: variablesCSS.mainColor, display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', height: '100vh'}}>
             <div className="table" style={{width: '60%'}}>
                 <DataTable 
                 columns={columns}
@@ -41,7 +40,7 @@ export default function AdminDashboard() {
                 progressPending={loading}
                 pagination
                 paginationPerPage={5}
-                style={customStyles}
+                customStyles={customStyles}
                 />
             </div>
         </div>
@@ -77,7 +76,29 @@ const columns = [
 const customStyles = {
     rows: {
         style: {
-            width: '500px'
+            backgroundColor: variablesCSS.mainColor,
+            color: 'whitesmoke'
+        }
+    },
+    headRow: {
+        style: {
+            backgroundColor: variablesCSS.mainColor,
+            color: 'whitesmoke'
+        }
+    },
+    pagination: {
+        style: {
+            backgroundColor: variablesCSS.mainColor,
+            color: 'whitesmoke'
+        },
+        pageButtonsStyle: {
+            backgroundColor: variablesCSS.secondaryColor
+        }
+    },
+    progress: {
+        style: {
+            backgroundColor: variablesCSS.mainColor,
+            color: 'whitesmoke'
         }
     }
 }

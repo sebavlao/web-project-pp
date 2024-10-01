@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { AuthAdminContext } from "../hooks/useAuth"
+import variablesCSS from "../styles/variablescss";
 
 export default function Header() {
     const { setToken, setRole } = useContext(AuthAdminContext);
@@ -11,7 +12,7 @@ export default function Header() {
     }
 
     return (
-        <div style={{backgroundColor: 'lightblue', height: '3rem'}}>
+        <div style={{backgroundColor: variablesCSS.secondaryColor, height: '3rem', color: 'white'}}>
             <button onClick={logOut}>Cerrar sesión</button>
         </div>
     )

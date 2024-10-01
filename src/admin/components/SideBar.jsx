@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { AuthAdminContext } from '../hooks/useAuth'
+import variablesCSS from '../styles/variablescss';
 
 export default function SideBar() {
     const { role } = useContext(AuthAdminContext);
@@ -9,7 +10,7 @@ export default function SideBar() {
     }, [])
 
     return (
-        <div style={{backgroundColor: 'lightgray', flex: '0 0 15%'}}>
+        <div style={{backgroundColor: variablesCSS.secondaryColor, borderBottomRightRadius: '1rem', borderTopRightRadius: '1rem', flex: '0 0 15%', color: 'white'}}>
             <a href="">Ver usuarios</a>
             {
                 role === "superadmin" && (
