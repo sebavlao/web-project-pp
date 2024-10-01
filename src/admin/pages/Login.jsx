@@ -5,6 +5,7 @@ import fetchWithBody from '../utilities/fetchWithBody';
 import { AuthAdminContext } from '../hooks/useAuth';
 import endpoints from '../data/api';
 import { Navigate } from 'react-router-dom';
+import variablesCSS from '../styles/variablescss';
 
 export default function LoginAdmin() {
   const [form, setForm] = useState();
@@ -34,7 +35,9 @@ export default function LoginAdmin() {
                 {/* name */}
                 <TextField id="outlined-basic" label="Usuario" borderColor='white' variant="outlined" name='username' onChange={handleInput} sx={{
                 input: {
+                  border: 'none',
                   color: 'whitesmoke',
+                  backgroundColor: variablesCSS.mainColor,
                   "&::placeholder": {    
                       opacity: .5,
                       color: 'white'
@@ -53,7 +56,7 @@ export default function LoginAdmin() {
                 {/* posible error */}
                 { errorText }
                 {/* submit */}
-                <Button variant="outlined" type='submit' sx={{marginTop: '1.1rem'}}>Iniciar sesión</Button>
+                <Button variant="outlined" type='submit' sx={{marginTop: '1.1rem', backgroundColor: variablesCSS.loginVioletColor, color: 'white', border: 'none'}}>Iniciar sesión</Button>
             </form>
         </div>
       )
@@ -67,9 +70,9 @@ const styles = {
         display: 'flex',
         flexDirection: 'column',
         padding: '1rem',
-        backgroundColor: '#3d444d',
+        backgroundColor: '#2b3036',
         borderRadius: '.5rem',
-        boxShadow: '0px 25px 20px -20px #1976d2'
+        boxShadow: '0px 25px 20px -20px' + variablesCSS.loginVioletColor
     },
     container: {
       height: '100vh',

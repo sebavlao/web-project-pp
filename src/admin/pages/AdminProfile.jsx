@@ -1,6 +1,6 @@
 export default function AdminProfile() {
     return (
-        <div>
+        <div style={{height: '100vh', color: 'white'}}>
             Profile de Admin
         </div>
     )

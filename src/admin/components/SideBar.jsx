@@ -11,15 +11,23 @@ export default function SideBar() {
 
     return (
         <div style={{backgroundColor: variablesCSS.secondaryColor, borderBottomRightRadius: '1rem', borderTopRightRadius: '1rem', flex: '0 0 15%', color: 'white'}}>
-            <a href="">Ver usuarios</a>
+            <OptionBar path={'/admin'} text={'Ver usuarios'} />
+            <OptionBar path={'/admin/profile'} text={'Mi perfil'} />
             {
                 role === "superadmin" && (
-                    <>
-                    <br />
-                    <a href='/admin'>Ver admins</a>
-                    </>
+                    <OptionBar path={'/superadmin'}/>
                 )
             }
+        </div>
+    )
+}
+
+function OptionBar({path, text}) {
+    return (
+        <div style={{padding: '0 1rem'}}>
+            <br />
+            <a href={path} style={{color: 'whitesmoke', transition: 'all .5s ease'}}>{text}</a>
+            <hr />
         </div>
     )
 }

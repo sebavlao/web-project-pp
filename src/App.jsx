@@ -23,6 +23,8 @@ function App() {
             <Route path='/admin-login' element={<LoginAdmin />}/>
             <Route path='/admin' element={<AdminLayout />}>
               <Route index element={<AdminDashboard></AdminDashboard>} />
+              <Route path='/admin/user/:id' element={<div style={{height: '100vh', color: 'white'}}>Usuario numero...</div>} />
+              <Route path='/admin/profile' element={<AdminProfile></AdminProfile>} />
             </Route>
           </Routes>
       </BrowserRouter>
