@@ -1,4 +1,5 @@
-export const register = {
+export const registerData = {
+    initialValues: ["name", "surname", "email", "username", "password", "date"],
     inputs: [
         {
             label: "Nombre",

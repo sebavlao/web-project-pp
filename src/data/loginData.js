@@ -1,4 +1,5 @@
-export const login = {
+export const loginData = {
+    initialValues: ["username", "password"],
     inputs: [
         {
             label: "Usuario",
