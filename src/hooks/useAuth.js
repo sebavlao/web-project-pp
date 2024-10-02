@@ -1,28 +1,4 @@
-// import { useContext } from "react"
-// import { AuthContext } from "../context/AuthContext"
-// import { API_USER } from "../api/api"
-
-// export const useAuth = () => {
-//     const auth = useContext(AuthContext)
-
-//     const login = async form => {
-//         try {
-//             const res = await API_USER.post("/", form)
-//             localStorage.setItem("x-access-token", res.data.token)
-//             return {success: true, role: res.data.role}
-//         } catch (err) {
-//             return {success: false, error: err}
-//         }
-//     }
-
-//     const logout = () => {
-//         localStorage.removeItem("x-access-token")
-//     }
-
-//     return { login, logout, auth }
-// }
-
-import { useContext, useState, useCallback } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { API_USER } from "../api/api";
 
@@ -31,7 +7,7 @@ export const useAuth = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const login = useCallback(async (form) => {
+  const login = async (form) => {
     setLoading(true);
     setError(null);
 
@@ -51,12 +27,12 @@ export const useAuth = () => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  };
 
-  const logout = useCallback(() => {
+  const logout = () => {
     localStorage.removeItem("x-access-token");
     setAuth(false)
-  }, []);
+  };
 
   return { login, logout, auth, loading, error };
 };

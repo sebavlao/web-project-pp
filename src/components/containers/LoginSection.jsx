@@ -15,7 +15,6 @@ export const LoginSection = ({ title }) => {
     e.preventDefault();
     setIsLoading(true);
     const result = await login(form);
-    console.log(result);
     if (result.success) {
       return result.role === "worker"
         ? navigate("/dashboard-trabajador")

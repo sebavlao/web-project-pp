@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
       setAuth(false);
     }
     setIsLoading(false);
-  }, [localStorage.getItem("x-access-token")]);
+  }, []);
 
   if (isLoading) return <div>Cargando...</div>;
 
