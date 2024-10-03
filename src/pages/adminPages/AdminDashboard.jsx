@@ -1,8 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import DataTable from "react-data-table-component";
-import { AuthAdminContext } from "../hooks/useAuth";
-import variablesCSS from "../styles/variablescss";
-import AccountCircle from "@mui/icons-material/AccountCircle";
+import { AuthAdminContext } from "../../hooks/adminHooks/useAuth";
+import variablesCSS from "../../styles/adminStyles/variablescss";
 import { TextField } from "@mui/material";
 
 export default function AdminDashboard() {
@@ -21,11 +20,11 @@ export default function AdminDashboard() {
             let json = await res.json();
             let rows = await json.map(user => {
                 return {
-                    userId: <a href={"/admin/user/" + user._id}><AccountCircle /> Ver Perfil</a>,
-                    username: user.username,
+                    username: <a href={"/admin/user/" + user._id}>{user.username}</a>,
                     email: user.email,
                     verified: user.verified ? '✅' : '❌',
-                    type: user.userType
+                    type: user.userType,
+                    actions: <></>
                 }
             })
             setOriginalData(rows)
@@ -37,11 +36,47 @@ export default function AdminDashboard() {
     }, [])
 
     const findUser = (e) => {
+        setMode(false)
         let updatedRows = originalData.filter(el => {
             return el.username.toLowerCase().includes(e.target.value.toLowerCase()) || el.email.toLowerCase().includes(e.target.value.toLowerCase())
         })
         setRows(updatedRows)
     }
+
+    // userId, username, email, password, userType, name, surname, birthdate, verified
+const columns = [
+    {
+        name: "Nombre de usuario",
+        selector: row => row.username,
+        width: '20%',
+    },
+    {
+        name: "Email",
+        selector: row => row.email,
+        width: '20%'
+    },
+    {
+        // name: <FilterColumn name={'Tipo'} property={'type'} options={['worker', 'client']} setRows={setRows} data={originalData} setMode={setMode} mode={mode} rows={rows} />,
+        name: 'Tipo',
+        selector: row => row.type,
+        sortable: true,
+        width: '20%'
+    },
+    {
+        // name: <FilterColumn name={'Verificado'} property={'verified'} options={['✅', '❌']} setRows={setRows} data={originalData} setMode={setMode} mode={mode} rows={rows} />,
+        name: 'Verificado',
+        sortable: true,
+        selector: row => row.verified,
+        width: '20%'
+    },
+    {
+        name: 'Acciones',
+        sortable: true,
+        selector: row => row.actions,
+        width: '20%'
+    }
+]
+
 
     return (
         <div style={{backgroundColor: variablesCSS.mainColor, width: '100%', minHeight: '100vh', maxHeight: '100%'}}>
@@ -76,34 +111,6 @@ export default function AdminDashboard() {
     )
 }
 
-// userId, username, email, password, userType, name, surname, birthdate, verified
-const columns = [
-    {
-        name: "",
-        selector: row => row.userId,
-        width: '20%'
-    },
-    {
-        name: "Nombre de usuario",
-        selector: row => row.username,
-        width: '20%',
-    },
-    {
-        name: "Email",
-        selector: row => row.email,
-        width: '20%'
-    },
-    {
-        name: "Tipo",
-        selector: row => row.type,
-        width: '20%'
-    },
-    {
-        name: "Verificado",
-        selector: row => row.verified,
-        width: '20%'
-    }
-]
 
 // estilos de la tabla
 

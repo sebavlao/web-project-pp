@@ -2,9 +2,9 @@ import { Outlet } from "react-router-dom"
 import Header from "./Header"
 import SideBar from "./SideBar"
 import { useState, useContext, useEffect } from "react"
-import { AuthAdminContext } from "../hooks/useAuth"
+import { AuthAdminContext } from "../../hooks/adminHooks/useAuth"
+import variablesCSS from "../../styles/adminStyles/variablescss"
 import { Navigate } from "react-router-dom"
-import variablesCSS from "../styles/variablescss"
 
 export default function AdminLayout() {
     const { token } = useContext(AuthAdminContext);

@@ -6,7 +6,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import variablesCSS from '../styles/variablescss';
+import variablesCSS from '../../styles/adminStyles/variablescss';
 
 export default function InputPassword({ handleInput }) {
   const [showPassword, setShowPassword] = React.useState(false);

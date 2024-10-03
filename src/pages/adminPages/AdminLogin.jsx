@@ -1,13 +1,13 @@
 import React, { useState, useContext } from 'react';
 import { TextField, Button} from '@mui/material';
-import InputPassword from '../components/InputPassword';
-import fetchWithBody from '../utilities/fetchWithBody';
-import { AuthAdminContext } from '../hooks/useAuth';
-import endpoints from '../data/api';
+import InputPassword from '../../components/adminComponents/InputPassword';
+import { AuthAdminContext } from '../../hooks/adminHooks/useAuth';
+import endpoints from '../../data/adminData/api';
 import { Navigate } from 'react-router-dom';
-import variablesCSS from '../styles/variablescss';
+import variablesCSS from '../../styles/adminStyles/variablescss';
+import fetchWithBody from '../../utilities/adminUtilities/fetchWithBody';
 
-export default function LoginAdmin() {
+export default function AdminLogin() {
   const [form, setForm] = useState();
   const [errorText, setErrorText] = useState(<></>);
   const { token, setToken, setRole } = useContext(AuthAdminContext);
@@ -33,7 +33,7 @@ export default function LoginAdmin() {
         <div style={styles.container}>
             <form method="POST" onSubmit={handleSubmit} style={styles.form}>
                 {/* name */}
-                <TextField id="outlined-basic" label="Usuario" borderColor='white' variant="outlined" name='username' onChange={handleInput} sx={{
+                <TextField id="outlined-basic" label="Usuario" variant="outlined" name='username' onChange={handleInput} sx={{
                 input: {
                   border: 'none',
                   color: 'whitesmoke',

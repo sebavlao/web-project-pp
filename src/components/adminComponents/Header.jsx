@@ -1,6 +1,6 @@
 import { useContext } from "react"
-import { AuthAdminContext } from "../hooks/useAuth"
-import variablesCSS from "../styles/variablescss";
+import { AuthAdminContext } from "../../hooks/adminHooks/useAuth";
+import variablesCSS from "../../styles/adminStyles/variablescss";
 
 export default function Header() {
     const { setToken, setRole } = useContext(AuthAdminContext);
