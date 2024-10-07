@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { AuthAdminContext } from "../../hooks/adminHooks/useAuth";
 import variablesCSS from "../../styles/adminStyles/variablescss";
+import endpoints from "../../data/adminData/api";
 
 export default function InfoUser({}) {
     const { token } = useContext(AuthAdminContext);
@@ -24,6 +25,17 @@ export default function InfoUser({}) {
         getUserInfo()
     }, [])
 
+    async function reactiveuser() {
+        let res = await fetch(endpoints.users + user._id + '/reactivate', {
+            method: 'PATCH',
+            headers: {
+                'x-access-token': token
+            }
+        })
+        let json = await res.json();
+        window.location.reload();
+    }
+
     if (loaded) return (
         <div style={{height: '100vh', color: 'whitesmoke', width: '60%', margin: 'auto'}}>
             <div className="container-user" style={{backgroundColor: variablesCSS.secondaryColor, padding: '1rem', paddingTop: 0, borderRadius: '.3rem'}}>
@@ -34,6 +46,7 @@ export default function InfoUser({}) {
                 <p>Tipo de usuario: {user.userType}</p>
                 <p>Fecha de nacimiento: {user.birthdate}</p>
                 <p>Estado: {user.verified ? 'Verificado' : 'No verificado'}</p>
+                { !user.isActive ? (<button onClick={reactiveuser} style={{backgroundColor: 'red', border: 'medium solid white', borderRadius: '.5rem', padding: '.2rem'}}>Reactivar Usuario</button>) : ("") } 
             </div>
         </div>
     )
