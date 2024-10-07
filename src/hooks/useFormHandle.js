@@ -16,12 +16,15 @@ export const useFormHandle = (initialValues = [], userType = null) => {
         setButtonStateDisabled(false)
     }, [isLoading])
 
-    if (userType) {
-        setForm({
-            ...form,
-            ["userType"]: userType
-        })
-    }
+
+    useEffect(() => {
+        if (userType) {
+            setForm({
+                ...form,
+                ["userType"]: userType
+            })
+        }
+    }, [userType])
 
     const inputsHandle = input => {
         const field = input.target.name
