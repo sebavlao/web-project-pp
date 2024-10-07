@@ -3,6 +3,8 @@ import DataTable from "react-data-table-component";
 import { AuthAdminContext } from "../../hooks/adminHooks/useAuth";
 import variablesCSS from "../../styles/adminStyles/variablescss";
 import { TextField } from "@mui/material";
+import endpoints from "../../data/adminData/api";
+import ActionsButtons from "../../components/adminComponents/ActionsButtons";
 
 export default function AdminDashboard() {
     const { token } = useContext(AuthAdminContext);
@@ -12,7 +14,7 @@ export default function AdminDashboard() {
 
     useEffect(() => {
         const getUsers = async () => {
-            let res = await fetch("http://localhost:5000/api/admin/user_info", {
+            let res = await fetch(endpoints.usersInfo, {
                 headers: {
                     'x-access-token': token
                 }
@@ -21,10 +23,12 @@ export default function AdminDashboard() {
             let rows = await json.map(user => {
                 return {
                     username: <a href={"/admin/user/" + user._id}>{user.username}</a>,
+                    nameuser: user.username,
                     email: user.email,
                     verified: user.verified ? '✅' : '❌',
                     type: user.userType,
-                    actions: <></>
+                    isActive: user.isActive ? 'activo' : 'baneado',
+                    actions: <ActionsButtons type={'user'} id={user._id}></ActionsButtons>
                 }
             })
             setOriginalData(rows)
@@ -36,9 +40,8 @@ export default function AdminDashboard() {
     }, [])
 
     const findUser = (e) => {
-        setMode(false)
         let updatedRows = originalData.filter(el => {
-            return el.username.toLowerCase().includes(e.target.value.toLowerCase()) || el.email.toLowerCase().includes(e.target.value.toLowerCase())
+            return el.nameuser.includes(e.target.value.toLowerCase()) || el.email.toLowerCase().includes(e.target.value.toLowerCase())
         })
         setRows(updatedRows)
     }
@@ -48,32 +51,36 @@ const columns = [
     {
         name: "Nombre de usuario",
         selector: row => row.username,
-        width: '20%',
+        width: '10%',
     },
     {
         name: "Email",
         selector: row => row.email,
-        width: '20%'
+        width: '25%'
     },
     {
-        // name: <FilterColumn name={'Tipo'} property={'type'} options={['worker', 'client']} setRows={setRows} data={originalData} setMode={setMode} mode={mode} rows={rows} />,
         name: 'Tipo',
         selector: row => row.type,
         sortable: true,
-        width: '20%'
+        width: '10%'
     },
     {
-        // name: <FilterColumn name={'Verificado'} property={'verified'} options={['✅', '❌']} setRows={setRows} data={originalData} setMode={setMode} mode={mode} rows={rows} />,
         name: 'Verificado',
         sortable: true,
         selector: row => row.verified,
-        width: '20%'
+        width: '15%'
+    },
+    {
+        name: 'Activo',
+        sortable: true,
+        selector: row => row.isActive,
+        width: '15%'
     },
     {
         name: 'Acciones',
         sortable: true,
         selector: row => row.actions,
-        width: '20%'
+        width: '25%'
     }
 ]
 
@@ -143,3 +150,4 @@ const customStyles = {
         }
     }
 }
+

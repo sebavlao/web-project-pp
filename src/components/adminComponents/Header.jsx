@@ -8,7 +8,7 @@ export default function Header() {
     function logOut() {
         setToken(false)
         setRole(false)
-        window.location.href = '/admin-login'
+        window.location.href = '/auth/admin-login'
     }
 
     return (

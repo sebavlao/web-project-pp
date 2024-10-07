@@ -5,6 +5,7 @@ import { useState, useContext, useEffect } from "react"
 import { AuthAdminContext } from "../../hooks/adminHooks/useAuth"
 import variablesCSS from "../../styles/adminStyles/variablescss"
 import { Navigate } from "react-router-dom"
+import endpoints from "../../data/adminData/api"
 
 export default function AdminLayout() {
     const { token } = useContext(AuthAdminContext);
@@ -12,7 +13,7 @@ export default function AdminLayout() {
 
     useEffect(() => {
         const getAuth = async () => {
-            let res = await fetch('http://localhost:5000/api/admin/user_info', {
+            let res = await fetch(endpoints.usersInfo, {
                 headers: {
                     "x-access-token": token
                 }
@@ -23,7 +24,7 @@ export default function AdminLayout() {
             if (status === 200) {
                 setViewsAdmin(<ViewAdminAuth></ViewAdminAuth>)
             } else {
-                setViewsAdmin(<Navigate to={'/admin-login'}></Navigate>)
+                setViewsAdmin(<Navigate to={'/auth/admin-login'}></Navigate>)
             }
         };
 
