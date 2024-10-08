@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react"
-import { AuthAdminContext } from "../../hooks/adminHooks/useAuth";
-import variablesCSS from "../../styles/adminStyles/variablescss";
-import endpoints from "../../data/adminData/api";
+import variablesCSS from "../../../styles/adminStyles/variablescss";
+import endpoints from "../../../data/adminData/api";
+import { AuthAdminContext } from "../../../hooks/adminHooks/useAuth";
 
 export default function InfoUser({}) {
     const { token } = useContext(AuthAdminContext);
@@ -12,7 +12,7 @@ export default function InfoUser({}) {
         const id = window.location.href.split('/')[5];
         
         async function getUserInfo() {
-            const res = await fetch("http://localhost:5000/api/admin/users/" + id, {
+            const res = await fetch(endpoints.users + id, {
                 headers: {
                     "x-access-token": token
                 }

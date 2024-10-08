@@ -2,14 +2,14 @@ import { Outlet } from "react-router-dom"
 import Header from "./Header"
 import SideBar from "./SideBar"
 import { useState, useContext, useEffect } from "react"
-import { AuthAdminContext } from "../../hooks/adminHooks/useAuth"
-import variablesCSS from "../../styles/adminStyles/variablescss"
 import { Navigate } from "react-router-dom"
-import endpoints from "../../data/adminData/api"
+import { AuthAdminContext } from "../../../hooks/adminHooks/useAuth"
+import variablesCSS from "../../../styles/adminStyles/variablescss"
+import endpoints from "../../../data/adminData/api"
 
 export default function AdminLayout() {
     const { token } = useContext(AuthAdminContext);
-    const [viewsAdmin, setViewsAdmin] = useState(<div style={ {height: '100vh', backgroundColor: 'white'} }><p>Cargando...</p></div>)
+    const [viewsAdmin, setViewsAdmin] = useState(<div style={ {height: '100vh', backgroundColor: variablesCSS.mainColor} }><p style={{color: 'white'}}>Cargando...</p></div>);
 
     useEffect(() => {
         const getAuth = async () => {

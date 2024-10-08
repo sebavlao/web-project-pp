@@ -6,10 +6,13 @@ import { RegisterWorker } from './pages/RegisterWorker'
 import {WorkerDashboard} from './pages/private/WorkerDashboard';
 import AuthAdminProvider from './hooks/adminHooks/useAuth'
 import AdminLogin from './pages/adminPages/AdminLogin'
-import AdminLayout from './components/adminComponents/AdminLayout'
-import AdminDashboard from './pages/adminPages/AdminDashboard'
+import AdminLayout from './components/adminComponents/Layouts/AdminLayout'
+import AdminDashboard from './pages/adminPages/usersInfoPage/AdminDashboard'
 import AdminProfile from './pages/adminPages/AdminProfile'
-import InfoUser from './pages/adminPages/InfoUser'
+import InfoUser from './pages/adminPages/usersInfoPage/InfoUser'
+import SuperAdminDashboard from './pages/adminPages/superAdminPages/SuperAdminDashboard'
+import JobsDashboard from './pages/adminPages/jobsPage/JobsDashboard'
+import LogsDashboard from './pages/adminPages/logsPage/LogsDashboard'
 
 function App() {
   return (
@@ -26,6 +29,9 @@ function App() {
               <Route index element={<AdminDashboard></AdminDashboard>} />
               <Route path='/admin/profile' element={<AdminProfile></AdminProfile>} />
               <Route path='/admin/user/:id' element={<InfoUser></InfoUser>} />
+              <Route path='/admin/jobs' element={<JobsDashboard></JobsDashboard>} />
+              <Route path='/admin/logs' element={<LogsDashboard></LogsDashboard>} />
+              <Route path='/admin/superadmin' element={<SuperAdminDashboard></SuperAdminDashboard>} />
             </Route>
           </Routes>
       </BrowserRouter>
