@@ -1,13 +1,18 @@
-
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Home } from './pages/Home'
 import { Login } from './pages/Login'
 import { RegisterClient } from './pages/RegisterClient'
 import { RegisterWorker } from './pages/RegisterWorker'
 import {WorkerDashboard} from './pages/private/WorkerDashboard';
-import LoginAdmin from './admin/pages/Login'
-import AuthAdminProvider from './admin/hooks/useAuth'
-import AdminDashboard from './admin/pages/AdminDashboard'
+import AuthAdminProvider from './hooks/adminHooks/useAuth'
+import AdminLogin from './pages/adminPages/AdminLogin'
+import AdminLayout from './components/adminComponents/Layouts/AdminLayout'
+import AdminDashboard from './pages/adminPages/usersInfoPage/AdminDashboard'
+import AdminProfile from './pages/adminPages/AdminProfile'
+import InfoUser from './pages/adminPages/usersInfoPage/InfoUser'
+import SuperAdminDashboard from './pages/adminPages/superAdminPages/SuperAdminDashboard'
+import JobsDashboard from './pages/adminPages/jobsPage/JobsDashboard'
+import LogsDashboard from './pages/adminPages/logsPage/LogsDashboard'
 import { AuthProvider } from './context/AuthContext'
 
 function App() {
@@ -21,8 +26,15 @@ function App() {
               <Route path='/registro-cliente' element={<RegisterClient/>}/>
               <Route path='/registro-trabajador' element={<RegisterWorker/>}/>
               <Route path='/dashboard-trabajador' element={<WorkerDashboard/>}/>
-              <Route path='/admin-login' element={<LoginAdmin />}/>
-              <Route path='/admin' element={<AdminDashboard />}/>
+              <Route path='/auth/admin-login' element={<AdminLogin />}/>
+              <Route path='/admin' element={<AdminLayout />}>
+                <Route index element={<AdminDashboard></AdminDashboard>} />
+                <Route path='/admin/profile' element={<AdminProfile></AdminProfile>} />
+                <Route path='/admin/user/:id' element={<InfoUser></InfoUser>} />
+                <Route path='/admin/jobs' element={<JobsDashboard></JobsDashboard>} />
+                <Route path='/admin/logs' element={<LogsDashboard></LogsDashboard>} />
+                <Route path='/admin/superadmin' element={<SuperAdminDashboard></SuperAdminDashboard>} />
+              </Route>
             </Routes>
         </BrowserRouter>
       </AuthAdminProvider>

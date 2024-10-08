@@ -6,6 +6,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import variablesCSS from '../../styles/adminStyles/variablescss';
 
 export default function InputPassword({ handleInput }) {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -22,21 +23,33 @@ export default function InputPassword({ handleInput }) {
 
   return (
       <div>
-        <FormControl variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">Contraseña</InputLabel>
+        <FormControl variant="outlined" sx={{marginTop: '1rem', backgroundColor: variablesCSS.mainColor}}>
+          <InputLabel htmlFor="outlined-adornment-password" sx={{color: 'white'}}>Contraseña</InputLabel>
           <OutlinedInput
             id="outlined-adornment-password"
             type={showPassword ? 'text' : 'password'}
+            sx={{
+              input: {
+                color: 'white',
+                backgroundColor: variablesCSS.mainColor
+              }
+            }}
             onChange={handleInput}
             name={'password'}
             endAdornment={
-              <InputAdornment position="end">
+              <InputAdornment position="end" sx={{
+                backgroundColor: variablesCSS.mainColor
+              }}>
                 <IconButton
                   aria-label="toggle password visibility"
                   onClick={handleClickShowPassword}
                   onMouseDown={handleMouseDownPassword}
                   onMouseUp={handleMouseUpPassword}
                   edge="end"
+                  sx={{
+                    color: 'white',
+                    backgroundColor: variablesCSS.mainColor
+                  }}
                 >
                   {showPassword ? <VisibilityOff /> : <Visibility />}
                 </IconButton>
