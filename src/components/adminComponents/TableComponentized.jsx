@@ -67,7 +67,7 @@ export default function TableDataComponentized({ endpoint, columns, parseRows, i
 
     return (
         <div style={{backgroundColor: variablesCSS.mainColor, width: '100%', minHeight: '100vh', maxHeight: '100%'}}>
-            <div className="container-seach" style={{width: '80%', margin: 'auto', marginTop: '1rem'}}>
+            <div className="container-seach" style={{width: '80%', margin: 'auto', marginTop: '1rem', display: 'flex', flexDirection: 'row' }}>
                 <TextField
                     id="standard-search"
                     label={inputText}
@@ -82,6 +82,7 @@ export default function TableDataComponentized({ endpoint, columns, parseRows, i
                         }
                     }, label: { color: 'whitesmoke', fontSize: '.8rem' } }}
                 />
+                <img src="../../../admin/search-circle.png" alt="" style={{height: '20px', width: '20px'}} />
             </div>
             <div className="table" style={{width: '80%', margin: 'auto', backgroundColor: variablesCSS.mainColor, paddingBottom: '2rem', paddingTop: '.5rem'}}>
                 <DataTable 
