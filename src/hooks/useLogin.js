@@ -23,8 +23,7 @@ export const useLogin = () => {
     const sendLogin = async () => {
         try {
             const res = await API_USER.post("/", form)
-            localStorage.setItem("user", form.username);
-            localStorage.setItem("password", form.password);
+            
             return {success: true, data: res.data}
            
       
