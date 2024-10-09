@@ -14,7 +14,7 @@ export const LoginSection = ({ title }) => {
         const result = await sendLogin()
 
         if (result.success) {
-            localStorage.setItem("x-acess-token", result.data.token)
+            localStorage.setItem("x-access-token", result.data.token)
             return navigate('/dashboard-trabajador')
         }
 
