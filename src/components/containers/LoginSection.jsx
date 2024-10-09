@@ -11,21 +11,6 @@ export const LoginSection = ({ title }) => {
     useFormHandle(loginData.initialValues);
   const navigate = useNavigate();
 
-<<<<<<< HEAD
-    const handleSubmit = async e => {
-        e.preventDefault()
-        setButtonState(true)
-        const result = await sendLogin()
-
-        if (result.success) {
-            localStorage.setItem("x-access-token", result.data.token)
-            return navigate('/dashboard-trabajador')
-        }
-
-        setButtonState(false)
-
-        // se podría agregar manejo de errores, el error se guarda en result.error
-=======
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -34,7 +19,6 @@ export const LoginSection = ({ title }) => {
       return result.role === "worker"
         ? navigate("/dashboard-trabajador")
         : navigate("/dashboard-cliente");
->>>>>>> 5864af8a33097d31a6270e5c5681885d3d515d3a
     }
 
     setIsLoading(false);

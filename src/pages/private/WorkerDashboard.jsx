@@ -24,15 +24,13 @@ export const WorkerDashboard = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 ">
       {/* NavBar con props de usuario */}
+
       <NavBar isLoggedIn={!!user} username={user} />
       
       
       
       <div className="w-full max-w-4xl pt-20">
         {/* Se utiliza el estado works */}
-        <h1 className="text-4xl font-bold text-center text-gray-800 mb-6 border-2  rounded-lg p-4 bg-white shadow-lg">
-          Lista de Trabajos
-        </h1>
         <WorkList works={works} />
       </div>
     </div>
