@@ -3,7 +3,8 @@ import { Home } from './pages/Home'
 import { Login } from './pages/Login'
 import { RegisterClient } from './pages/RegisterClient'
 import { RegisterWorker } from './pages/RegisterWorker'
-import {WorkerDashboard} from './pages/private/WorkerDashboard';
+import  {WorkerDashboard} from './pages/private/WorkerDashboard';
+import WorkDetail from './pages/private/WorkDetail';
 import AuthAdminProvider from './hooks/adminHooks/useAuth'
 import AdminLogin from './pages/adminPages/AdminLogin'
 import AdminLayout from './components/adminComponents/Layouts/AdminLayout'
@@ -25,7 +26,9 @@ function App() {
               <Route path='/login' element={<Login/>}/>
               <Route path='/registro-cliente' element={<RegisterClient/>}/>
               <Route path='/registro-trabajador' element={<RegisterWorker/>}/>
-              <Route path='/dashboard-trabajador' element={<WorkerDashboard/>}/>
+              <Route path='/trabajador' element={<WorkerDashboard />}>
+                <Route path='detalle-trabajo/:id' element={<WorkDetail />} />
+              </Route>
               <Route path='/auth/admin-login' element={<AdminLogin />}/>
               <Route path='/admin' element={<AdminLayout />}>
                 <Route index element={<AdminDashboard></AdminDashboard>} />
