@@ -15,6 +15,7 @@ import SuperAdminDashboard from './pages/adminPages/superAdminPages/SuperAdminDa
 import JobsDashboard from './pages/adminPages/jobsPage/JobsDashboard'
 import LogsDashboard from './pages/adminPages/logsPage/LogsDashboard'
 import { AuthProvider } from './context/AuthContext'
+import { ProtectedRoutes } from './utils/ProtectedRoutes'
 
 function App() {
   return (
@@ -26,8 +27,11 @@ function App() {
               <Route path='/login' element={<Login/>}/>
               <Route path='/registro-cliente' element={<RegisterClient/>}/>
               <Route path='/registro-trabajador' element={<RegisterWorker/>}/>
-              <Route path='/trabajador' element={<WorkerDashboard />}>
-                <Route path='detalle-trabajo/:id' element={<WorkDetail />} />
+              <Route element={<ProtectedRoutes/>}>
+                <Route path='/trabajador'>
+                  <Route index element={<WorkerDashboard />}/>
+                  <Route path='detalle-trabajo/:id' element={<WorkDetail />} />
+                </Route>
               </Route>
               <Route path='/auth/admin-login' element={<AdminLogin />}/>
               <Route path='/admin' element={<AdminLayout />}>
