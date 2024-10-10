@@ -7,7 +7,7 @@ const WorkCard = ({ id, titulo, imagen, categoria, descripcion }) => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate(`/dashboard-detalle-trabajador/${encodeURIComponent(id)}`);
+    navigate(`/trabajador/detalle-trabajo/${encodeURIComponent(id)}`);
   };
   return (
     <div className="bg-white rounded-lg shadow-md p-4 mb-4">
@@ -17,7 +17,7 @@ const WorkCard = ({ id, titulo, imagen, categoria, descripcion }) => {
       <p className="text-gray-500">{descripcion}</p>
       {/* Botón "Detalles" estilizado */}
       <button
-      onClick={handleNavigate}
+      onClick={()=>handleNavigate()}
       className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md mt-4 transition duration-200 ease-in-out">
       Detalles
     </button>

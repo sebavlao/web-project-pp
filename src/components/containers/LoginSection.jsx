@@ -17,7 +17,7 @@ export const LoginSection = ({ title }) => {
     const result = await login(form);
     if (result.success) {
       return result.role === "worker"
-        ? navigate("/dashboard-trabajador")
+        ? navigate("/trabajador")
         : navigate("/dashboard-cliente");
     }
 

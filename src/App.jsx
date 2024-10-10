@@ -26,7 +26,8 @@ function App() {
               <Route path='/login' element={<Login/>}/>
               <Route path='/registro-cliente' element={<RegisterClient/>}/>
               <Route path='/registro-trabajador' element={<RegisterWorker/>}/>
-              <Route path='/trabajador' element={<WorkerDashboard />}>
+              <Route path='/trabajador'>
+                <Route index element={<WorkerDashboard />}/>
                 <Route path='detalle-trabajo/:id' element={<WorkDetail />} />
               </Route>
               <Route path='/auth/admin-login' element={<AdminLogin />}/>

@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useGetWorkDetail } from '../../hooks/useGetWorkDetail';
 import { useAccessToken } from '../../hooks/useAccessToken';
-
+//Cuando se pueda agregar un loading 
 const WorkDetail = () => {
+  console.log("La re puta ")
   const navigate = useNavigate();
   const { id } = useParams();
   const decodedId = id ? decodeURIComponent(id) : null; // Decodifica solo si existe id
@@ -31,7 +32,7 @@ const WorkDetail = () => {
         <p className="text-base text-gray-500 mb-6">{work.description}</p>
         
         <button
-          onClick={() => navigate(-1)}
+          onClick={() => navigate("/trabajador")}
           className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition duration-200 ease-in-out"
         >
           Volver
