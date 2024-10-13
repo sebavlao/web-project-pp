@@ -3,7 +3,8 @@ import { Home } from './pages/Home'
 import { Login } from './pages/Login'
 import { RegisterClient } from './pages/RegisterClient'
 import { RegisterWorker } from './pages/RegisterWorker'
-import {WorkerDashboard} from './pages/private/WorkerDashboard';
+import  {WorkerDashboard} from './pages/private/WorkerDashboard';
+import WorkDetail from './pages/private/WorkDetail';
 import AuthAdminProvider from './hooks/adminHooks/useAuth'
 import AdminLogin from './pages/adminPages/AdminLogin'
 import AdminLayout from './components/adminComponents/Layouts/AdminLayout'
@@ -14,6 +15,7 @@ import SuperAdminDashboard from './pages/adminPages/superAdminPages/SuperAdminDa
 import JobsDashboard from './pages/adminPages/jobsPage/JobsDashboard'
 import LogsDashboard from './pages/adminPages/logsPage/LogsDashboard'
 import { AuthProvider } from './context/AuthContext'
+import { ProtectedRoutes } from './utils/ProtectedRoutes'
 
 function App() {
   return (
@@ -25,7 +27,12 @@ function App() {
               <Route path='/login' element={<Login/>}/>
               <Route path='/registro-cliente' element={<RegisterClient/>}/>
               <Route path='/registro-trabajador' element={<RegisterWorker/>}/>
-              <Route path='/dashboard-trabajador' element={<WorkerDashboard/>}/>
+              <Route element={<ProtectedRoutes/>}>
+                <Route path='/trabajador'>
+                  <Route index element={<WorkerDashboard />}/>
+                  <Route path='detalle-trabajo/:id' element={<WorkDetail />} />
+                </Route>
+              </Route>
               <Route path='/auth/admin-login' element={<AdminLogin />}/>
               <Route path='/auth/admin' element={<AdminLayout />}>
                 <Route index element={<AdminDashboard></AdminDashboard>} />
