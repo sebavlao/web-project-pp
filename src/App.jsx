@@ -27,13 +27,13 @@ function App() {
               <Route path='/registro-trabajador' element={<RegisterWorker/>}/>
               <Route path='/dashboard-trabajador' element={<WorkerDashboard/>}/>
               <Route path='/auth/admin-login' element={<AdminLogin />}/>
-              <Route path='/admin' element={<AdminLayout />}>
+              <Route path='/auth/admin' element={<AdminLayout />}>
                 <Route index element={<AdminDashboard></AdminDashboard>} />
-                <Route path='/admin/profile' element={<AdminProfile></AdminProfile>} />
-                <Route path='/admin/user/:id' element={<InfoUser></InfoUser>} />
-                <Route path='/admin/jobs' element={<JobsDashboard></JobsDashboard>} />
-                <Route path='/admin/logs' element={<LogsDashboard></LogsDashboard>} />
-                <Route path='/admin/superadmin' element={<SuperAdminDashboard></SuperAdminDashboard>} />
+                <Route path='/auth/admin/profile' element={<AdminProfile></AdminProfile>} />
+                <Route path='/auth/admin/user/:id' element={<InfoUser></InfoUser>} />
+                <Route path='/auth/admin/jobs' element={<JobsDashboard></JobsDashboard>} />
+                <Route path='/auth/admin/logs' element={<LogsDashboard></LogsDashboard>} />
+                <Route path='/auth/admin/superadmin' element={<SuperAdminDashboard></SuperAdminDashboard>} />
               </Route>
             </Routes>
         </BrowserRouter>

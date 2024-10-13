@@ -4,6 +4,7 @@ import { AuthAdminContext } from "../../hooks/adminHooks/useAuth";
 import variablesCSS from "../../styles/adminStyles/variablescss";
 import { TextField } from "@mui/material";
 import endpoints from "../../data/adminData/api";
+import SearchIcon from '@mui/icons-material/Search';
 
 export default function TableDataComponentized({ endpoint, columns, parseRows, inputText }) {
     const { token } = useContext(AuthAdminContext);
@@ -28,41 +29,24 @@ export default function TableDataComponentized({ endpoint, columns, parseRows, i
         getData()
     }, [endpoint])
 
+    const propertyEditables = {
+        [endpoints.usersInfo]: ["nameuser", "email"],
+        [endpoints.admins]: ["nameuser"],
+        [endpoints.jobs]: ["title", "id", "autor"],
+        [endpoints.jobsCategories]: ["id", "name"],
+        [endpoints.logs]: ["id", "ip"]
+    }
+
     const findUser = (e) => {
-        if (endpoint === endpoints.usersInfo) {
-            let updatedRows = originalData.filter(el => {
-                return el.nameuser.toLowerCase().includes(e.target.value.toLowerCase()) || el.email.toLowerCase().includes(e.target.value.toLowerCase());
+       let updatedRows = [];
+       originalData.forEach(el => {
+            propertyEditables[endpoint].forEach(property => {
+                if (el[property].toLowerCase().includes(e.target.value.toLowerCase())) {
+                    updatedRows.push(el)
+                }
             })
-            setRows(updatedRows)
-        }
-        
-        if (endpoint === endpoints.admins) {
-            let updatedRows = originalData.filter(el => {
-                return el.nameuser.toLowerCase().includes(e.target.value.toLowerCase());
-            })
-            setRows(updatedRows)
-        }
-
-        if (endpoint === endpoints.jobs) {
-            let updatedRows = originalData.filter(el => {
-                return el.title.toLowerCase().includes(e.target.value.toLowerCase()) || el.id.toLowerCase().includes(e.target.value.toLowerCase()) || el.autor.toLowerCase().includes(e.target.value.toLowerCase())
-            })
-            setRows(updatedRows)
-        }  
-
-        if (endpoint === endpoints.logs) {
-            let updatedRows = originalData.filter(el => {
-                return el.id.toLowerCase().includes(e.target.value.toLowerCase()) || el.ip.toLowerCase().includes(e.target.value.toLowerCase())
-            })
-            setRows(updatedRows)
-        }
-
-        if (endpoint === endpoints.jobsCategories) {
-            let updatedRows = originalData.filter(el => {
-                return el.id.toLowerCase().includes(e.target.value.toLowerCase()) || el.name.toLowerCase().includes(e.target.value.toLowerCase());
-            })
-            setRows(updatedRows)
-        }
+       })
+       setRows(updatedRows);
     }
 
     return (
@@ -74,7 +58,7 @@ export default function TableDataComponentized({ endpoint, columns, parseRows, i
                     type="search"
                     variant="standard"
                     onChange={findUser}
-                    sx={{color: 'white', borderBottom: 'thin solid grey', marginBottom: '.5rem', width: '30%', input: {
+                    sx={{color: 'white', borderBottom: 'thin solid grey', marginBottom: '.5rem', width: '20%', input: {
                         color: 'whitesmoke',
                         fontSize: '.7rem',
                         "&::placeholder": {
@@ -82,7 +66,7 @@ export default function TableDataComponentized({ endpoint, columns, parseRows, i
                         }
                     }, label: { color: 'whitesmoke', fontSize: '.8rem' } }}
                 />
-                <img src="../../../admin/search-circle.png" alt="" style={{height: '20px', width: '20px'}} />
+                <SearchIcon sx={{color: 'white', alignSelf: 'center'}}></SearchIcon>
             </div>
             <div className="table" style={{width: '80%', margin: 'auto', backgroundColor: variablesCSS.mainColor, paddingBottom: '2rem', paddingTop: '.5rem'}}>
                 <DataTable 
