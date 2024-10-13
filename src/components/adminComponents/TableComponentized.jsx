@@ -38,15 +38,37 @@ export default function TableDataComponentized({ endpoint, columns, parseRows, i
     }
 
     const findUser = (e) => {
-       let updatedRows = [];
-       originalData.forEach(el => {
-            propertyEditables[endpoint].forEach(property => {
-                if (el[property].toLowerCase().includes(e.target.value.toLowerCase())) {
-                    updatedRows.push(el)
-                }
+        if (endpoint === endpoints.usersInfo) {
+            let updatedRows = originalData.filter(el => {
+                return el.nameuser.toLowerCase().includes(e.target.value.toLowerCase()) || el.email.toLowerCase().includes(e.target.value.toLowerCase());
             })
-       })
-       setRows(updatedRows);
+            setRows(updatedRows)
+        }
+        
+        if (endpoint === endpoints.admins) {
+            let updatedRows = originalData.filter(el => {
+                return el.nameuser.toLowerCase().includes(e.target.value.toLowerCase());
+            })
+            setRows(updatedRows)
+        }
+        if (endpoint === endpoints.jobs) {
+            let updatedRows = originalData.filter(el => {
+                return el.title.toLowerCase().includes(e.target.value.toLowerCase()) || el.id.toLowerCase().includes(e.target.value.toLowerCase()) || el.autor.toLowerCase().includes(e.target.value.toLowerCase())
+            })
+            setRows(updatedRows)
+        }  
+        if (endpoint === endpoints.logs) {
+            let updatedRows = originalData.filter(el => {
+                return el.id.toLowerCase().includes(e.target.value.toLowerCase()) || el.ip.toLowerCase().includes(e.target.value.toLowerCase())
+            })
+            setRows(updatedRows)
+        }
+        if (endpoint === endpoints.jobsCategories) {
+            let updatedRows = originalData.filter(el => {
+                return el.id.toLowerCase().includes(e.target.value.toLowerCase()) || el.name.toLowerCase().includes(e.target.value.toLowerCase());
+            })
+            setRows(updatedRows)
+        }
     }
 
     return (
@@ -66,7 +88,7 @@ export default function TableDataComponentized({ endpoint, columns, parseRows, i
                         }
                     }, label: { color: 'whitesmoke', fontSize: '.8rem' } }}
                 />
-                <SearchIcon sx={{color: 'white', alignSelf: 'center'}}></SearchIcon>
+                <SearchIcon sx={{color: 'white', alignSelf: 'center', fontSize: '1rem'}}></SearchIcon>
             </div>
             <div className="table" style={{width: '80%', margin: 'auto', backgroundColor: variablesCSS.mainColor, paddingBottom: '2rem', paddingTop: '.5rem'}}>
                 <DataTable 
