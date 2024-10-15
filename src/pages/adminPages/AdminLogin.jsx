@@ -27,7 +27,7 @@ export default function AdminLogin() {
   }
 
     if (token) {
-      return <Navigate to={'/admin'}/>
+      return <Navigate to={'/auth/admin'}/>
     } else {
       return (
         <div style={styles.container}>

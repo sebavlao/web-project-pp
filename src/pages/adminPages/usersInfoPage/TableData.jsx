@@ -4,7 +4,7 @@ import ActionsButtons from "../../../components/adminComponents/Modals/ActionsBu
 function UsersInfoParseRows(json) {
     const rows = json.map(user => {
         return {
-            username: <a href={"/admin/user/" + user._id}>{user.username}</a>,
+            username: <a href={"/auth/admin/user/" + user._id}>{user.username}</a>,
             nameuser: user.username,
             email: user.email,
             verified: user.verified ? '✅' : '❌',
