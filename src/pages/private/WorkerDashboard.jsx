@@ -3,6 +3,7 @@ import WorkList from '../../components/WorkList';
 import NavBar from '../../components/NavBar'; 
 import { useGetWorks } from '../../hooks/useGetWorks';
 import { useAccessToken } from '../../hooks/useAccessToken';
+import Footer from  '../../components/Footer'; 
 
 // El dashboard trabajador debe ser una ruta privada, agregar lógica via auth context.
 
@@ -33,7 +34,9 @@ export const WorkerDashboard = () => {
         {/* Se utiliza el estado works */}
         <WorkList works={works} />
       </div>
+      <Footer />
     </div>
+
   );
 };
 
