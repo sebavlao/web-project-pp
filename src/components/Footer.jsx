@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 const Footer = () => {
   return (
     <footer className="bg-gray-800 text-white w-full py-4">
-      <div className="container mx-auto flex items-center justify-between">
+      <div className="container mx-auto flex items-center justify-between max-w-5xl">
         <div className="footer-logo">
              {/* Logo */}
           <img src="/admin/worklink-logo-colored.png" alt="Logo de la Compañía" className="h-11 pl-16" />
