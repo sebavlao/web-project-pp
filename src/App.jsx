@@ -25,6 +25,9 @@ function App() {
             <Routes>
               <Route path='/' element={<Home></Home>}/>
               <Route path='/login' element={<Login/>}/>
+              {/* <Route path="/nosotros" element={<About />} />
+              <Route path="/contacto" element={<Contact />} />
+              <Route path="/terminos" element={<Terms />} /> */}
               <Route path='/registro-cliente' element={<RegisterClient/>}/>
               <Route path='/registro-trabajador' element={<RegisterWorker/>}/>
               <Route element={<ProtectedRoutes/>}>
