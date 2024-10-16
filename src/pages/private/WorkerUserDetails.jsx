@@ -19,7 +19,8 @@ export const WorkerUserDetails = () => {
 
         //  petición a la API
         const response = await API_USER.get("/me", {
-          headers: { Authorization: `Bearer ${token}` }, // Incluir  token en la cabecera
+
+          headers: { "x-access-token": token }, // Incluir  token en la cabecera
         });
 
         setUserData(response.data); // Guarda datos del usurio
@@ -27,6 +28,7 @@ export const WorkerUserDetails = () => {
         setLoading(false);
       } catch (err) {
         setError("Error al obtener los datos del usuario.");
+        console.log(err)
         setLoading(false);
       }
     };
