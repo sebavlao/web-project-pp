@@ -18,7 +18,7 @@ export const LoginSection = ({ title }) => {
     if (result.success) {
       return result.role === "worker"
         ? navigate("/trabajador")
-        : navigate("/dashboard-cliente");
+        : navigate("/cliente");
     }
 
     setIsLoading(false);
