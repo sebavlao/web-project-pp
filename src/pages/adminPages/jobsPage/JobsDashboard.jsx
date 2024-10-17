@@ -9,7 +9,6 @@ export default function JobsDashboard() {
     const JobsCategoriesPage = <TableDataComponentized endpoint={endpoints.jobsCategories} columns={JobsCategoriesColumns} parseRows={JobsCategoriesParseRows} inputText={'Buscar por ID o nombre'}></TableDataComponentized>
     const [page, setPage] = useState(JobsPage)
 
-
     return (
         <div style={{display: 'flex', width: '100%', flexDirection: 'column'}}>
             <nav style={{backgroundColor: variablesCSS.formColor, display: 'flex', width: '100%', justifyContent: 'center'}}> 

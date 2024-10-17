@@ -2,8 +2,8 @@ import { Box, Typography } from "@mui/material";
 import { useState, useEffect, useContext } from "react";
 import { AuthAdminContext } from "../../../hooks/adminHooks/useAuth";
 import endpoints from "../../../data/adminData/api";
-import { FormEditAdmin } from "../Forms/Admin/FormEdit";
-import { FormEditUser } from "../Forms/User/FormEdit";
+import { FormEditAdmin } from "../Forms/Admin/FormEdit.jsx";
+import { FormUser } from "../Forms/User/FormAdd&Edit.jsx";
 import { FormEditJob } from "../Forms/Job/FormEdit";
 import variablesCSS from "../../../styles/adminStyles/variablescss";
 
@@ -30,7 +30,7 @@ export function ModalEdit({ id, endpoint }) {
 
     function setForm() {
         if (endpoint === endpoints.users) {
-            return <FormEditUser user={data}></FormEditUser>
+            return <FormUser user={data} endpoint={endpoint+id} method={"PUT"}></FormUser>
         }
 
         if (endpoint === endpoints.admins) {

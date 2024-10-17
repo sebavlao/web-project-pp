@@ -21,7 +21,7 @@ export default function SuperAdminDashboard() {
             if (status === 200) {
                 setViewsSuperAdmin(ViewsSuperAdminAuth);
             } else {
-                setViewsSuperAdmin(<Navigate to={'/admin'}></Navigate>);
+                setViewsSuperAdmin(<Navigate to={'/auth/admin'}></Navigate>);
             }
         }
 

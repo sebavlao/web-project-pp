@@ -2,8 +2,8 @@
 import React, {useState, useEffect } from 'react';
 import { useAccessToken } from './useAccessToken';
 
-  export const useGetWorks = () => {
-    const [works, setWorks] = useState([]);
+  export const useGetWorkDetail = (jobId) => {
+    const [work, setWork] = useState([]);
     const { getToken } = useAccessToken();
     const token = getToken();
 
@@ -12,7 +12,7 @@ import { useAccessToken } from './useAccessToken';
       localStorage.setItem('x-access-token', token)
       const fetchTrabajos = async () => {
         try {
-          const response = await fetch('http://localhost:5000/api/jobs' ,{
+          const response = await fetch(`http://localhost:5000/api/jobs/${jobId}` ,{
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
@@ -26,7 +26,7 @@ import { useAccessToken } from './useAccessToken';
   
           const data = await response.json();
           // console.log('Success:', data); muestra los datos 
-          setWorks(data); // Establece los trabajos recibidos
+          setWork(data); // Establece los trabajos recibidos
         } catch (err) {
           console.error('Error fetching jobs:', err);
         }
@@ -37,5 +37,5 @@ import { useAccessToken } from './useAccessToken';
       }
     }, [token]); // Añade token como dependencia
 
-    return { works};
+    return { work };
   };
