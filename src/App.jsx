@@ -17,6 +17,7 @@ import LogsDashboard from './pages/adminPages/logsPage/LogsDashboard'
 import { AuthProvider } from './context/AuthContext'
 import { ProtectedRoutes } from './utils/ProtectedRoutes'
 import { Layout } from './layout/Layout'
+import { JobApplication } from "./pages/private/JobApplication";
 
 function App() {
   return (
@@ -37,6 +38,9 @@ function App() {
                     <Route index element={<WorkerDashboard />}/>
                     <Route path='detalle-trabajo/:id' element={<WorkDetail />} />
                   </Route>
+                  <Route path="/cliente">
+                    <Route path="solicitud-trabajo" element={<JobApplication />}/>
+                  </Route>
                 </Route>
               </Route>
               <Route path='/auth/admin-login' element={<AdminLogin />}/>
@@ -52,7 +56,7 @@ function App() {
         </BrowserRouter>
       </AuthAdminProvider>
     </AuthProvider>
-  )
+  );
 }
 
 export default App;
