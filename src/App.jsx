@@ -16,6 +16,7 @@ import JobsDashboard from './pages/adminPages/jobsPage/JobsDashboard'
 import LogsDashboard from './pages/adminPages/logsPage/LogsDashboard'
 import { AuthProvider } from './context/AuthContext'
 import { ProtectedRoutes } from './utils/ProtectedRoutes'
+import { Layout } from './layout/Layout'
 
 function App() {
   return (
@@ -23,17 +24,19 @@ function App() {
       <AuthAdminProvider>
         <BrowserRouter>
             <Routes>
-              <Route path='/' element={<Home></Home>}/>
-              <Route path='/login' element={<Login/>}/>
-              {/* <Route path="/nosotros" element={<About />} />
-              <Route path="/contacto" element={<Contact />} />
-              <Route path="/terminos" element={<Terms />} /> */}
-              <Route path='/registro-cliente' element={<RegisterClient/>}/>
-              <Route path='/registro-trabajador' element={<RegisterWorker/>}/>
-              <Route element={<ProtectedRoutes/>}>
-                <Route path='/trabajador'>
-                  <Route index element={<WorkerDashboard />}/>
-                  <Route path='detalle-trabajo/:id' element={<WorkDetail />} />
+              <Route path='/' element={<Layout/>}>
+                <Route index element={<Home></Home>}/>
+                <Route path='/login' element={<Login/>}/>
+                {/* <Route path="/nosotros" element={<About />} />
+                <Route path="/contacto" element={<Contact />} />
+                <Route path="/terminos" element={<Terms />} /> */}
+                <Route path='/registro-cliente' element={<RegisterClient/>}/>
+                <Route path='/registro-trabajador' element={<RegisterWorker/>}/>
+                <Route element={<ProtectedRoutes/>}>
+                  <Route path='/trabajador'>
+                    <Route index element={<WorkerDashboard />}/>
+                    <Route path='detalle-trabajo/:id' element={<WorkDetail />} />
+                  </Route>
                 </Route>
               </Route>
               <Route path='/auth/admin-login' element={<AdminLogin />}/>
