@@ -1,11 +1,11 @@
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useEffect, useContext, useState } from "react";
 import { AuthAdminContext } from "../../../hooks/adminHooks/useAuth";
-import variablesCSS from "../../../styles/adminStyles/variablescss";
+import BoxStyled from "../Box";
 
 export function ModalDelete({ id, endpoint, text, method = null }) {
     const [confirm, setConfirm] = useState(false);
-    const { token } = useContext(AuthAdminContext);
+    const { token, reload, setReload } = useContext(AuthAdminContext);
 
     const remove = async () => {
         let res = await fetch(endpoint + id, {
@@ -17,7 +17,7 @@ export function ModalDelete({ id, endpoint, text, method = null }) {
 
         let json = await res.json();
         setConfirm(false);
-        window.location.reload();
+        setReload(!reload);
     };
 
     useEffect(() => {
@@ -26,24 +26,12 @@ export function ModalDelete({ id, endpoint, text, method = null }) {
 
 
     return (
-        <Box sx={style}>
+        <BoxStyled>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             { text }
           </Typography>
           <button onClick={remove}>Aceptar</button>
-        </Box>
+        </BoxStyled>
     )
 }
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    color: 'whitesmoke',
-    bgcolor: variablesCSS.secondaryColor,
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-};

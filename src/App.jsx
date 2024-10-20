@@ -18,6 +18,7 @@ import { AuthProvider } from './context/AuthContext'
 import { ProtectedRoutes } from './utils/ProtectedRoutes'
 import { Layout } from './layout/Layout'
 import { JobApplication } from "./pages/private/JobApplication";
+import { ClientDashboard } from './pages/private/ClientDashboard'
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
                     <Route path='detalle-trabajo/:id' element={<WorkDetail />} />
                   </Route>
                   <Route path="/cliente">
+                    <Route index element={<ClientDashboard />}/> 
                     <Route path="solicitud-trabajo" element={<JobApplication />}/>
                   </Route>
                 </Route>

@@ -36,9 +36,9 @@ export default function AdminLayout() {
 
 function ViewAdminAuth() {
     return (
-        <div>
+        <div style={{height: '100vh'}}>
             <Header></Header>
-            <div style={{display: 'flex', backgroundColor: variablesCSS.mainColor}}>
+            <div style={{display: 'flex', backgroundColor: variablesCSS.mainColor, height: '91vh', maxHeight: '100%'}}>
                 <SideBar></SideBar>
                 <Outlet></Outlet>
             </div>

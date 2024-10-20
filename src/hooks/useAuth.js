@@ -13,7 +13,7 @@ export const useAuth = () => {
 
     try {
       const res = await API_USER.post("/", form);
-
+      console.log(res)
       if (res.data && res.data.token) {
         localStorage.setItem("x-access-token", res.data.token);
         setAuth(true)

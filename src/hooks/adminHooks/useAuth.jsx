@@ -5,6 +5,7 @@ export const AuthAdminContext = createContext();
 export default function AuthAdminProvider({ children }) {
     const [token, setToken] = useState(getInitialToken);
     const [role, setRole] = useState(getInitialRole);
+    const [reload, setReload] = useState(false);
 
     useEffect(() => {
         sessionStorage.setItem('token', JSON.stringify(token));
@@ -30,7 +31,9 @@ export default function AuthAdminProvider({ children }) {
                 token,
                 setToken,
                 role,
-                setRole
+                setRole,
+                reload,
+                setReload
             }
         }>
             {children}

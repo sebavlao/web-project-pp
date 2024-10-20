@@ -6,6 +6,7 @@ import { FormEditAdmin } from "../Forms/Admin/FormEdit.jsx";
 import { FormUser } from "../Forms/User/FormAdd&Edit.jsx";
 import { FormEditJob } from "../Forms/Job/FormEdit";
 import variablesCSS from "../../../styles/adminStyles/variablescss";
+import BoxStyled from "../Box.jsx";
 
 export function ModalEdit({ id, endpoint }) {
     const { token } = useContext(AuthAdminContext);
@@ -43,30 +44,16 @@ export function ModalEdit({ id, endpoint }) {
     }
 
     return (
-        <Box sx={style}>
+        <BoxStyled>
+
           <Typography id="modal-modal-title" variant="h6" component="h2">
         
-            <Box sx={style}>
                 {loaded ? (
                     setForm()
                 ) : (
                     <p>Cargando...</p>
                 )}
-            </Box>
           </Typography>
-        </Box>
+        </BoxStyled>
     )
 }
-
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    color: 'whitesmoke',
-    bgcolor: variablesCSS.secondaryColor,
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-};

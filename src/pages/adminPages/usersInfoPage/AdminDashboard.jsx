@@ -5,13 +5,13 @@ import variablesCSS from "../../../styles/adminStyles/variablescss";
 import "./styles.css"
 import AdminModal from "../../../components/adminComponents/Modals/AdminModal";
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
-import { Box } from "@mui/material";
 import { FormUser } from "../../../components/adminComponents/Forms/User/FormAdd&Edit";
+import BoxStyled from "../../../components/adminComponents/Box";
 
 export default function AdminDashboard() {
 
     return (
-        <div style={{display: 'flex', width: '100%', flexDirection: 'column', alignItems: 'center'}}>
+        <div style={{display: 'flex', maxHeight: 'auto', overflowY: 'auto', width: '100%', flexDirection: 'column', alignItems: 'center'}}>
             <div className="header" 
                 style={styles.header}>
                 <AdminModal logo={<div style={{color: 'white'}}>Crear usuario | <PersonAddIcon style={{color: 'white'}} /></div>} children={<FormAdd />} />
@@ -23,9 +23,9 @@ export default function AdminDashboard() {
 
 function FormAdd() {
     return (
-        <Box sx={styles.box}>
+        <BoxStyled>
             <FormUser method={"POST"} endpoint={endpoints.users}/>
-        </Box>
+        </BoxStyled>
     )
 }
 
@@ -41,17 +41,5 @@ const styles = {
         justifyContent: 'flex-end', 
         alignItems: 'center', 
         color: 'whitesmoke'
-    },
-    box: {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: 400,
-        color: 'whitesmoke',
-        bgcolor: variablesCSS.secondaryColor,
-        border: '2px solid #000',
-        boxShadow: 24,
-        p: 4,
     }
 }

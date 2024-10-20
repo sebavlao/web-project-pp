@@ -1,18 +1,18 @@
 export const useAccessToken = () => {
-    const getToken = () => {
-        
-        return localStorage.getItem('x-access-token');
-    };
+  const getToken = () => {
+      
+      return localStorage.getItem('x-access-token');
+  };
+
+  const getUser = () => {
   
-    const getUser = () => {
-    
-      return localStorage.getItem('user');
+    return localStorage.getItem('user');
+  };
+
+  const getPassword = () => {
+  
+      return localStorage.getItem('password');
     };
 
-    const getPassword = () => {
-    
-        return localStorage.getItem('password');
-      };
-  
-    return { getToken, getUser,getPassword };
-  };
+  return { getToken, getUser,getPassword };
+};

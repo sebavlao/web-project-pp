@@ -4,7 +4,7 @@ import { AuthAdminContext } from "../../../../hooks/adminHooks/useAuth";
 import endpoints from "../../../../data/adminData/api";
 
 export function FormEditAdmin({ admin }) {
-    const { token } = useContext(AuthAdminContext);
+    const { token, reload, setReload } = useContext(AuthAdminContext);
     const [form, setForm] = useState({});
 
     function handleInput(e) {
@@ -22,7 +22,7 @@ export function FormEditAdmin({ admin }) {
              body: JSON.stringify(form)
          })
          let json = await res.json();
-         window.location.reload();
+         setReload(!reload)
     }
 
     return (

@@ -5,6 +5,8 @@ import { Navigate } from "react-router-dom"
 import TableDataComponentized from "../../../components/adminComponents/TableComponentized";
 import variablesCSS from "../../../styles/adminStyles/variablescss";
 import { SuperAdminColumns, SuperAdminParseRows } from "./TableData";
+import AdminModal from "../../../components/adminComponents/Modals/AdminModal";
+import FormCreate from "../../../components/adminComponents/Forms/CreateRegister";
 
 export default function SuperAdminDashboard() {
     const { token } = useContext(AuthAdminContext);
@@ -19,7 +21,7 @@ export default function SuperAdminDashboard() {
             })
             let status = res.status;
             if (status === 200) {
-                setViewsSuperAdmin(ViewsSuperAdminAuth);
+                setViewsSuperAdmin(<ViewsSuperAdminAuth token={token}></ViewsSuperAdminAuth>);
             } else {
                 setViewsSuperAdmin(<Navigate to={'/auth/admin'}></Navigate>);
             }
@@ -31,9 +33,12 @@ export default function SuperAdminDashboard() {
     return viewsSuperAdmin
 }
 
-function ViewsSuperAdminAuth() {
-    
+function ViewsSuperAdminAuth({token}) {
+
     return (
-        <TableDataComponentized endpoint={endpoints.admins} columns={SuperAdminColumns} parseRows={SuperAdminParseRows} inputText={"Buscar por username"}></TableDataComponentized>
+        <div style={{height: 'auto', width: '100%', overflowY: 'scroll'}}>
+            <AdminModal logo={'create admin'}><FormCreate endpoint={endpoints.registerAdmins} token={token} properties={['username', 'password']}></FormCreate></AdminModal>
+            <TableDataComponentized endpoint={endpoints.admins} columns={SuperAdminColumns} parseRows={SuperAdminParseRows} inputText={"Buscar por username"} />
+        </div>
     )
 }

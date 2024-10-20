@@ -5,7 +5,7 @@ import endpoints from "../../../../data/adminData/api";
 import InputPassword from "../../InputPassword";
 
 export function FormUser({ endpoint, method, user = null }) {
-    const { token } = useContext(AuthAdminContext);
+    const { token, reload, setReload } = useContext(AuthAdminContext);
     const [form, setForm] = useState({});
 
     function handleInput(e) {
@@ -24,7 +24,7 @@ export function FormUser({ endpoint, method, user = null }) {
              body: JSON.stringify(form)
          })
          let json = await res.json();
-         window.location.reload()
+         setReload(!reload)
     }
 
     function handleDate(e) {
@@ -37,7 +37,7 @@ export function FormUser({ endpoint, method, user = null }) {
             <TextFieldForm label={'Nombre de usuario'} name={'username'} defaultValue={!user ? "" : user.username} onChange={handleInput}></TextFieldForm>
             <TextFieldForm label={'Email'} name={'email'} defaultValue={!user ? "" : user.email} onChange={handleInput}></TextFieldForm>
             { endpoint == endpoints.users ? (
-                <InputPassword handleInput={handleInput}></InputPassword>
+                <TextFieldForm label={'Contraseña'} name={'password'} onChange={handleInput} />
             ) : ""}
             <label htmlFor="userType">Tipo de usuario</label>
             <select name="userType" defaultValue={!user ? " " : user.userType} style={{color: 'black'}} onChange={handleInput}>

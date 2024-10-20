@@ -55,7 +55,58 @@ const UsersInfoColumns = [
     }
 ]
 
+// ipaddress, requestmethod, requesturl, requestbody, responsestatuscode, userAgent
+// Filas/Registros para activity
+function ActivityUserParseRows(json) {
+    const rows = json.map(log => {
+        console.log(log.requestBody)
+        return {
+            ip: log.ipAddress,
+            method: log.requestMethod + ' | ' + log.responseStatusCode,
+            url: log.requestUrl,
+            body: log.requestBody ? JSON.stringify(log.requestBody) : 'empty',
+            userAgent: log.userAgent
+        }
+    })
+
+    return rows
+}
+
+// Columnas para Users
+const ActivityColumns = [
+    {
+        name: "IP",
+        selector: row => row.ip,
+        width: '20%',
+    },
+    {
+        name: "Method",
+        selector: row => row.method,
+        width: '10%'
+    },
+    {
+        name: 'URL',
+        selector: row => row.url,
+        sortable: true,
+        width: '20%'
+    },
+    {
+        name: 'Req Body',
+        sortable: true,
+        selector: row => row.body,
+        width: '25%'
+    },
+    {
+        name: 'User Agent',
+        sortable: true,
+        selector: row => row.userAgent,
+        width: '25%'
+    }
+]
+
 export {
     UsersInfoColumns,
-    UsersInfoParseRows
+    UsersInfoParseRows,
+    ActivityColumns,
+    ActivityUserParseRows
 }

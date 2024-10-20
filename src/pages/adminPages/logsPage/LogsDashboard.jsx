@@ -5,6 +5,8 @@ import { LogsColumns, LogsParseRows } from "./TableData";
 export default function LogsDashboard() {
 
     return (
-        <TableDataComponentized endpoint={endpoints.logs} columns={LogsColumns} parseRows={LogsParseRows} inputText={'Buscar por ID, IP o username'}></TableDataComponentized>
+        <div style={{height: 'auto', width: '100%', overflowY: 'scroll', display: 'flex'}}>
+            <TableDataComponentized endpoint={endpoints.logs} columns={LogsColumns} parseRows={LogsParseRows} inputText={'Buscar por ID, IP o username'}></TableDataComponentized>
+        </div>
     )
 }

@@ -7,15 +7,15 @@ export default function SideBar() {
     const { role } = useContext(AuthAdminContext);
 
     return (
-        <div style={{backgroundColor: variablesCSS.secondaryColor, borderBottomRightRadius: '1rem', borderTopRightRadius: '1rem', flex: '0 0 15%', color: 'white'}}>
+        <div style={{backgroundColor: variablesCSS.secondaryColor, borderBottomRightRadius: '1rem', borderTopRightRadius: '1rem', flex: '0 0 15%', color: 'white', height: 'auto'}}>
                 <OptionBar path={'/auth/admin'} text={'Ver usuarios'} src={"../../../admin/user-group.png"} />
                 {
                     role === "superadmin" && (
-                        <OptionBar path={'/auth/admin/superadmin'} text={'Ver admins'} src={"../../../admin/iconadmin.png"}/>
+                        <OptionBar path={'/auth/admin/superadmin'} text={'Ver admins'} src={"../../../admin/iconadmin.png"} />
                     )
                 }
-                <OptionBar path={'/auth/admin/jobs'} text={'Ver trabajos'} src={"../../../admin/iconjobs.png"} />
-                <OptionBar path={'/auth/admin/logs'} text={'Ver logs'} src={"../../../admin/iconlogs.png" }/>
+                <OptionBar path={'/auth/admin/jobs'} text={'Ver trabajos'} src={"../../../admin/iconjobs.png"} />            
+                <OptionBar path={'/auth/admin/logs'} text={'Ver logs de admin'} src={"../../../admin/iconlogs.png" } />
                 <OptionBar path={'/auth/admin/profile'} text={'Mi perfil'} src={"../../../admin/user-square.png"} />
         </div>
     )
@@ -32,3 +32,5 @@ function OptionBar({path, text, src}) {
         </div>
     )
 }
+
+
