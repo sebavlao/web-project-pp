@@ -16,7 +16,7 @@ export const RegisterSection = ({ title, userType }) => {
         const result = await registerService(form)
 
         if (result.success) {
-            localStorage.setItem("x-acess-token", result.data.token)
+            localStorage.setItem("x-access-token", result.data.token)
             return navigate("/verificar-email")
         }
         

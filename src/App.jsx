@@ -19,7 +19,7 @@ import { ProtectedRoutes } from './utils/ProtectedRoutes'
 import { Layout } from './layout/Layout'
 import { JobApplication } from "./pages/private/JobApplication";
 import { ClientDashboard } from './pages/private/ClientDashboard'
-
+import { WorkerUserDetails } from './pages/private/WorkerUserDetails'
 function App() {
   return (
     <AuthProvider>
@@ -38,6 +38,7 @@ function App() {
                   <Route path='/trabajador'>
                     <Route index element={<WorkerDashboard />}/>
                     <Route path='detalle-trabajo/:id' element={<WorkDetail />} />
+                    <Route path="detalles-usuario-trabajador" element={<WorkerUserDetails/>}/>
                   </Route>
                   <Route path="/cliente">
                     <Route index element={<ClientDashboard />}/> 
