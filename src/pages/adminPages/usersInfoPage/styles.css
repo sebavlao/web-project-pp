@@ -1,0 +1,16 @@
+.container-user {
+    width: 90%;
+    padding: .5rem;
+    font-size: '.9rem';
+    display: flex;
+    max-width: auto;
+}
+
+.activity {
+    height: auto;
+}
+
+.logs-table {
+    overflow-y: scroll;
+    border: thin solid white;
+}

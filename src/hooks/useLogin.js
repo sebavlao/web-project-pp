@@ -9,20 +9,24 @@ export const useLogin = () => {
 
     const [buttonState, setButtonState] = useState(false)
 
-    const inputsHandle = input => {
-        const field = input.target.name
-        const value = input.target.value
+    const inputsHandle = (input) => {
+        const field = input.target.name;
+        const value = input.target.value;
 
-        setForm({
-            ...form,
+        setForm((prevForm) => ({
+            ...prevForm,
             [field]: value
-        })
-    }
+        }));
+    };
+
 
     const sendLogin = async () => {
         try {
             const res = await API_USER.post("/", form)
+            
             return {success: true, data: res.data}
+           
+      
         } catch (err) {
             return {success: false, error: err}
         }
