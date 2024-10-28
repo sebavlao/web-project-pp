@@ -1,18 +1,20 @@
 /* Hook para hacer un get a los trabajos disponibles*/
-import React, {useState, useEffect } from 'react';
+import {useState, useEffect, useContext } from 'react';
 import { useAccessToken } from './useAccessToken';
+import endpoints from "../data/adminData/api"
+import { ClientContext } from '../context/ClientContext';
 
   export const useGetWorks = () => {
     const [works, setWorks] = useState([]);
     const { getToken } = useAccessToken();
     const token = getToken();
-
+    let { offset, category } = useContext(ClientContext);
   
     useEffect(() => {
       localStorage.setItem('x-access-token', token)
       const fetchTrabajos = async () => {
         try {
-          const response = await fetch('http://localhost:5000/api/jobs' ,{
+          const response = await fetch(endpoints.userJobs + '?limit=10000', {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
@@ -35,7 +37,7 @@ import { useAccessToken } from './useAccessToken';
       if (token) { // Solo ejecuta fetchTrabajos si hay un token
         fetchTrabajos();
       }
-    }, [token]); // Añade token como dependencia
+    }, [token, offset, category]); // Añade token como dependencia
 
     return { works};
   };

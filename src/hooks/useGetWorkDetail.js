@@ -26,7 +26,7 @@ import { useAccessToken } from './useAccessToken';
   
           const data = await response.json();
           // console.log('Success:', data); muestra los datos 
-          setWork(data); // Establece los trabajos recibidos
+          setWork(data.job); // Establece los trabajos recibidos
         } catch (err) {
           console.error('Error fetching jobs:', err);
         }

@@ -12,6 +12,10 @@ export default function ClientProvider ({ children }) {
   //4-
   const [jobIdModal, setJobIdModal] = useState(false);
 
+  /// variables for workers
+  const [offset, setOffset] = useState(1);
+  const [category, setCategory] = useState('all');
+
   return <ClientContext.Provider 
         value={{
             // 1- Variables for update profile section
@@ -28,7 +32,14 @@ export default function ClientProvider ({ children }) {
 
             //4- Variables for set job id of modal
             jobIdModal,
-            setJobIdModal
+            setJobIdModal,
+
+            ///////////////////////// variables for WORKER
+            offset,
+            setOffset,
+
+            category,
+            setCategory
         }}>
             {children}
         </ClientContext.Provider>;
