@@ -19,12 +19,14 @@ import { ProtectedRoutes } from './utils/ProtectedRoutes'
 import { Layout } from './layout/Layout'
 import { JobApplication } from "./pages/private/JobApplication";
 import { ClientDashboard } from './pages/private/ClientDashboard'
+import ClientProvider from './context/ClientContext'
 
 function App() {
   return (
     <AuthProvider>
       <AuthAdminProvider>
         <BrowserRouter>
+          <ClientProvider>
             <Routes>
               <Route path='/' element={<Layout/>}>
                 <Route index element={<Home></Home>}/>
@@ -39,10 +41,10 @@ function App() {
                     <Route index element={<WorkerDashboard />}/>
                     <Route path='detalle-trabajo/:id' element={<WorkDetail />} />
                   </Route>
-                  <Route path="/cliente">
-                    <Route index element={<ClientDashboard />}/> 
-                    <Route path="solicitud-trabajo" element={<JobApplication />}/>
-                  </Route>
+                    <Route path="/cliente">
+                      <Route index element={<ClientDashboard />}/> 
+                      <Route path="solicitud-trabajo" element={<JobApplication />}/>
+                    </Route>
                 </Route>
               </Route>
               <Route path='/auth/admin-login' element={<AdminLogin />}/>
@@ -55,6 +57,7 @@ function App() {
                 <Route path='/auth/admin/superadmin' element={<SuperAdminDashboard></SuperAdminDashboard>} />
               </Route>
             </Routes>
+            </ClientProvider>
         </BrowserRouter>
       </AuthAdminProvider>
     </AuthProvider>

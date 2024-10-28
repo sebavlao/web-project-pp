@@ -14,6 +14,12 @@
     --opacity-hover: .5;
 }
 
+/* helpers */
+.div-center {
+    display: flex;
+    justify-content: center;
+}
+
 /* Home-View, Contenedor Padre */
 
 .home-view {
@@ -100,6 +106,7 @@
 
 .add-job {
     background-color: var(--color-process);
+    margin-bottom: var(--padding-2);
 }
 
 .nav-jobs {
@@ -116,7 +123,96 @@
 }
 
 .select-applicants {
-    color: black;
+    font-size: .8rem;
+    padding: var(--padding-4);
+    background-color: var(--bg-color-primary);
+    border-color: var(--bg-color-secondary);
+    border-radius: var(--border-radius-2);
+    margin-left: .5rem;
+}
+
+.btn {
+    padding: var(--padding-4);
+    border-radius: var(--border-radius-1);
+}
+
+.select-worker {
+    background-color: var(--bg-color-secondary);
+}
+
+.finish-job {
+    background-color: var(--color-active);
+    margin-top: .3rem;
+    display: inline;
+    transition: all .5s ease;
+}
+
+.finish-job:hover {
+    opacity: .5;
+}
+
+.div-confirm-reject {
+    margin-top: .3rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.btn {
+    padding: var(--padding-4);
+    margin-top: .3rem;
+    margin-right: .3rem;
+    border-radius: var(--border-radius-2);
+    transition: all .5s ease;
+}
+
+.btn:hover {
+    opacity: .5;
+}
+
+.confirm-finish {
+    background-color: var(--color-active);
+    display: inline;
+}
+
+.cancel-finish {
+    background-color: var(--color-finished);
+    display: inline;
+}
+
+.text-confirm {
+    padding: var(--padding-4);
+    background-color: var(--bg-color-primary);
+    border-radius: var(--border-radius-2)
+}
+
+.modal-job {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 80vh;
+    width: 80%;
+    color: whitesmoke;
+    border-color: none;
+    border-radius: .5rem;
+    background-color: #1e293b;
+}
+
+.section-applicants {
+    font-size: .8rem;
+    margin-top: var(--padding-2);
+    background-color: var(--bg-color-secondary);
+    padding: var(--padding-2);
+    border-radius: var(--border-radius-2);
+}
+
+.profile-worker {
+    border-radius: var(--border-radius-2);
+    margin-top: .5rem;
+    padding: var(--padding-3);
+    background-color: var(--bg-color-primary);
 }
 
 /* Profile */
@@ -133,6 +229,10 @@
     border-radius: var(--border-radius-2);
     margin-bottom: .5rem;
     font-size: .8rem;
+}
+
+.title {
+    padding: var(--padding-3);
 }
 
 /* Add job section */
@@ -152,6 +252,15 @@
 .anchor-add-job:hover {
     cursor: pointer;
     opacity: var(--opacity-hover);
+}
+
+/* Posteos de trabajos */
+
+.job-post {
+    background-color: var(--bg-color-secondary);
+    padding: var(--padding-2);
+    border-radius: var(--border-radius-2);
+    font-size: .8rem;
 }
 
 @media only screen and (max-width: 600px) {

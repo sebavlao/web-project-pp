@@ -21,4 +21,3 @@ export const API_CURRENT_USER = axios.create({
         'x-access-token': getToken()
     }
 })
-

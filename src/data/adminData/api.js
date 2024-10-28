@@ -6,7 +6,8 @@ const endpoints = {
     admins: "http://localhost:5000/api/admin/admins/",
     jobs: "http://localhost:5000/api/admin/jobs/",
     logs: "http://localhost:5000/api/admin/logs/",
-    jobsCategories: "http://localhost:5000/api/admin/job_categories"
+    jobsCategories: "http://localhost:5000/api/admin/job_categories",
+    userJobs: "http://localhost:5000/api/jobs"
 }
 
 export default endpoints
