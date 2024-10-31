@@ -15,6 +15,7 @@ const WorkDetail = () => {
   
   const [work, setWork] = useState(null);
   const { work: fetchedWork } = useGetWorkDetail(decodedId);
+  const [notif, setNotif] = useState(false);
 
   useEffect(() => {
     if (fetchedWork) {
@@ -27,7 +28,6 @@ const WorkDetail = () => {
   }
 
   async function applyToJob() {
-    console.log(work.id)
     let res = await fetch(endpoints.userJobs + "/" + work.id + "/apply", {
       method: "POST",
       headers: {
@@ -35,8 +35,7 @@ const WorkDetail = () => {
       }
     });
 
-    let json = await res.json();
-    console.log(json)
+    res.status === 200 ? setNotif(<Notif success={true} />) : setNotif(<Notif success={false} />)
   }
 
   return (
@@ -46,16 +45,37 @@ const WorkDetail = () => {
         <p className="text-lg text-gray-600 mb-2">Categoría: {work.category}</p>
         <p className="text-base text-gray-500 mb-6">{work.description}</p>
         
-        <button
-          onClick={() => navigate("/trabajador")}
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition duration-200 ease-in-out"
-        >
+        <button onClick={() => navigate("/trabajador")}
+          className="bg-black text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition duration-200 ease-in-out">
           Volver
         </button>
-        <button className='apply-job' onClick={applyToJob}>Aplicar a trabajo</button>
+        { 
+          notif ?
+          notif :
+          <button className='apply-job' onClick={applyToJob}>Aplicar a trabajo</button>
+        }
       </div>
     </div>
   );
 };
+
+function Notif({success}) {
+  const message = success ? <p className='success-apply'>Te postulaste correctamente al trabajo.</p> : <p className='bad-apply'>Error. Ya estás postulado para este trabajo.</p>
+  const [notif, setNotif] = useState(message);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setNotif(false)
+    }, 5000);
+  }, [])
+
+  return (
+    <div>
+      { notif && 
+        notif
+      }
+    </div>
+  )
+}
 
 export default WorkDetail;

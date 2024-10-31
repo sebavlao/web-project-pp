@@ -45,8 +45,8 @@ export const WorkerUserDetails = () => {
   }
 
   return (
-    <div className="min-h-screen flex justify-center items-center py-6 px-4">
-      <div className="text-white">
+    <div className="min-h-screen flex justify-center bg-gray-100 items-center py-6 px-4">
+      <div className="text-black">
         <h1 className="text-3xl font-bold mb-4">Bienvenido, {userData?.name}</h1>
         <p><strong>Nombre: </strong>{userData?.name}</p>
         <p><strong>Apellido: </strong>{userData?.surname}</p>

@@ -21,6 +21,7 @@ import { JobApplication } from "./pages/private/JobApplication";
 import { ClientDashboard } from './pages/private/ClientDashboard'
 import ClientProvider from './context/ClientContext'
 import { WorkerUserDetails } from './pages/private/WorkerUserDetails'
+import MyJobsWorker from './pages/private/MyJobsWorker'
 
 function App() {
   return (
@@ -40,8 +41,9 @@ function App() {
                 <Route element={<ProtectedRoutes/>}>
                   <Route path='/trabajador'>
                     <Route index element={<WorkerDashboard />}/>
+                    <Route path='mis-trabajos' element={<MyJobsWorker />} />
                     <Route path='detalle-trabajo/:id' element={<WorkDetail />} />
-                    <Route path="detalles-usuario-trabajador" element={<WorkerUserDetails/>}/>
+                    <Route path="profile" element={<WorkerUserDetails/>}/>
                   </Route>
                     <Route path="/cliente">
                       <Route index element={<ClientDashboard />}/> 

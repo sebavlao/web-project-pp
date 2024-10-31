@@ -6,7 +6,7 @@ const WorkList = ({ works }) => {
   if (!works) return <h1>No se encontraron trabajos</h1> 
   return (
     <>
-    <div className="w-full max-w-4xl mx-auto">
+    <div className="w-full max-w-4xl mx-auto" style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '.5rem'}}>
       { 
         works?.map((work) => (
           <WorkCard

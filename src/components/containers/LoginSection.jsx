@@ -30,9 +30,9 @@ export const LoginSection = ({ title }) => {
     <section>
       <form
         onSubmit={handleSubmit}
-        className="bg-zinc-800 px-10 min-h-[400px] py-10 text-white flex text-xl flex-col justify-between rounded-xl gap-5"
+        className="bg-zinc-800 px-10 min-h-[400px] py-10 text-white flex text-xl flex-col rounded-xl gap-5"
       >
-        <h1 className="flex justify-center font-bold text-3xl">{title}</h1>
+        <h1 className="flex justify-centerfont-bold text-3xl">{title}</h1>
         <ul className="grid grid-cols-1 gap-4">
           {loginData.inputs.map((input, index) => (
             <Input

@@ -254,6 +254,26 @@
     opacity: var(--opacity-hover);
 }
 
+/* Styles CSS WORKER */
+
+.detail-btn {
+    background-color: var(--color-active);
+}
+
+.logout-btn {
+    background-color: var(--color-active);
+}
+
+.profile-text {
+    color: whitesmoke;
+    display: inline;
+    margin-left: .2rem;
+}
+
+.navbar-worker {
+    background-color: var(--bg-color-primary);
+}
+
 /* Posteos de trabajos */
 
 .job-post {
@@ -261,6 +281,10 @@
     padding: var(--padding-2);
     border-radius: var(--border-radius-2);
     font-size: .8rem;
+}
+
+.worker-username {
+    font-weight: bold;
 }
 
 @media only screen and (max-width: 600px) {

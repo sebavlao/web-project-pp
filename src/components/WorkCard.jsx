@@ -18,7 +18,7 @@ const WorkCard = ({ id, titulo, imagen, categoria, descripcion }) => {
       {/* Botón "Detalles" estilizado */}
       <button
       onClick={()=>handleNavigate()}
-      className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md mt-4 transition duration-200 ease-in-out">
+      className="inline-block hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md mt-4 transition duration-200 ease-in-out detail-btn">
       Detalles
     </button>
     </div>
