@@ -12,7 +12,7 @@ import { useAccessToken } from './useAccessToken';
       localStorage.setItem('x-access-token', token)
       const fetchTrabajos = async () => {
         try {
-          const response = await fetch(`http://localhost:5000/api/jobs/${jobId}` ,{
+          const response = await fetch(`http://worklink.com.ar:5000/api/jobs/${jobId}` ,{
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',

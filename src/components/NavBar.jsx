@@ -82,12 +82,26 @@ const NavBar = () => {
               </button>
             </div>
           ) : (
-            <Link
-              to="/login"
-              className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md"
-            >
-              Login
-            </Link>
+            <>
+              <Link
+                to="/login"
+                className="bg-blue-500 mx-2 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md"
+              >
+                Login
+              </Link>
+              <Link
+                to="/registro-cliente"
+                className="bg-white mx-2 text-ellipsis hover:bg-slate-300 text-black font-semibold py-2 px-4 rounded-md"
+              >
+                Registro cliente
+              </Link>
+              <Link
+                to="/registro-trabajador"
+                className="bg-white mx-2 text-ellipsis hover:bg-slate-300 text-black font-semibold py-2 px-4 rounded-md"
+              >
+                Registro trabajador
+              </Link>
+            </>
           )}
         </div>
       </div>

@@ -1,20 +1,46 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_JOBS } from "../../api/api";
+import { useFormHandle } from "../../hooks/useFormHandle";
 
 export const JobApplication = () => {
-  const [description, setDescription] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [categories, setCategories] = useState();
+  const { form, inputsHandle } = useFormHandle([
+    "title",
+    "description",
+    "category",
+  ]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    API_JOBS.get("/categories")
+      .then((resp) => {
+        setCategories(resp.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    setLoading(false);
+  }, []);
 
   const handleForm = (e) => {
     e.preventDefault();
-    navigate("/cliente");
+    API_JOBS.post("/", form)
+      .then((res) => console.log(res))
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => navigate("/cliente"));
   };
 
-  const handleDescriptionChange = (e) => {
-    if (e.target.value.length <= 250) {
-      setDescription(e.target.value);
-    }
-  };
+  if (loading)
+    return (
+      <h1 className="flex items-center justify-center min-h-screen bg-gray-100">
+        Cargando...
+      </h1>
+    );
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -36,8 +62,10 @@ export const JobApplication = () => {
           <input
             type="text"
             id="title"
+            name="title"
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             placeholder="Ingrese el trabajo que desea solicitar"
+            onChange={inputsHandle}
           />
         </div>
 
@@ -51,8 +79,17 @@ export const JobApplication = () => {
           <select
             id="category"
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            onChange={inputsHandle}
+            name="category"
           >
             <option value="">Seleccione una categoría</option>
+            {categories?.map((category) => {
+              return (
+                <option id={category._id} key={category?._id}>
+                  {category?.category}
+                </option>
+              );
+            })}
           </select>
         </div>
 
@@ -65,13 +102,13 @@ export const JobApplication = () => {
           </label>
           <textarea
             id="description"
-            value={description}
-            onChange={handleDescriptionChange}
+            name="description"
+            onChange={inputsHandle}
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             placeholder="Describa el trabajo solicitado"
             rows="4"
           />
-          <p className="text-sm text-gray-500">{description.length}/250</p>
+          <p className="text-sm text-gray-500">250</p>
         </div>
 
         <div className="mt-6">

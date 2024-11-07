@@ -1,5 +1,5 @@
 export const registerData = {
-    initialValues: ["name", "surname", "email", "username", "password", "date"],
+    initialValues: ["name", "surname", "email", "username", "password", "birthdate"],
     inputs: [
         {
             label: "Nombre",
