@@ -27,7 +27,7 @@ export const LoginSection = ({ title }) => {
   };
 
   return (
-    <section>
+    <section className="">
       <form
         onSubmit={handleSubmit}
         className="bg-zinc-800 px-10 min-h-[400px] py-10 text-white flex text-xl flex-col rounded-xl gap-5"
