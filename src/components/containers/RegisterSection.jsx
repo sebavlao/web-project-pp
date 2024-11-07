@@ -17,7 +17,7 @@ export const RegisterSection = ({ title, userType }) => {
 
         if (result.success) {
             localStorage.setItem("x-access-token", result.data.token)
-            return navigate("/verificar-email")
+            return navigate("/login")
         }
         
         console.error(result.error)
