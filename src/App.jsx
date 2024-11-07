@@ -54,7 +54,6 @@ function App() {
               <Route path='/auth/admin-login' element={<AdminLogin />}/>
               <Route path='/auth/admin' element={<AdminLayout />}>
                 <Route index element={<AdminDashboard></AdminDashboard>} />
-                <Route path='/auth/admin/profile' element={<AdminProfile></AdminProfile>} />
                 <Route path='/auth/admin/user/:id' element={<InfoUser></InfoUser>} />
                 <Route path='/auth/admin/jobs' element={<JobsDashboard></JobsDashboard>} />
                 <Route path='/auth/admin/logs' element={<LogsDashboard></LogsDashboard>} />

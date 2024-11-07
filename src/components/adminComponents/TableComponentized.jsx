@@ -5,6 +5,7 @@ import variablesCSS from "../../styles/adminStyles/variablescss";
 import { TextField } from "@mui/material";
 import endpoints from "../../data/adminData/api";
 import SearchIcon from '@mui/icons-material/Search';
+import "./../styles.css"
 
 export default function TableDataComponentized({ endpoint, columns, parseRows, inputText, scroll, selectJobs = false }) {
     const { token, reload } = useContext(AuthAdminContext);
@@ -80,12 +81,12 @@ export default function TableDataComponentized({ endpoint, columns, parseRows, i
         }
 
         let updatedRows = originalData.filter(el => {
-            return el.state.toLowerCase() === e.target.value
+            return el.stateForFilter.toLowerCase() === e.target.value
         })
         setRows(updatedRows)
     }
 
-    const filterJobs = !selectJobs ? "" : <select name="selectCategory" onChange={selectByState}><option value="todos">Todos</option><option value="activo">Activo</option><option value="pendiente">Pendiente</option><option value="finalizado">Finalizado</option></select>
+    const filterJobs = !selectJobs ? "" : <select name="selectCategory" className="select-stateForFilter" style={{marginLeft: '1rem'}} onChange={selectByState}><option value="todos">Todos</option><option value="activo">Activo</option><option value="pendiente">Pendiente</option><option value="finalizado">Finalizado</option></select>
 
     const scrollActive = !scroll ? {backgroundColor: variablesCSS.mainColor, width: '100%', minHeight: '100%', maxHeight: '100%'} : {backgroundColor: variablesCSS.mainColor, width: '100%', minHeight: '100%', maxHeight: '100%', overflowX: 'scroll'}
 

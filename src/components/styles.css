@@ -114,6 +114,19 @@
     justify-content: space-between;
 }
 
+.select-stateForFilter {
+    border: thin solid white;
+    background-color: transparent;
+    color: whitesmoke;
+    border-radius: .5rem;
+    font-size: .8rem;
+}
+
+.select-stateForFilter > option {
+    background-color: var(--color-finished);
+    color: whitesmoke;
+}
+
 .select-job {
     font-size: .8rem;
     padding: var(--padding-4);

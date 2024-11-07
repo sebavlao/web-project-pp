@@ -10,7 +10,7 @@ import FormCreate from "../../../components/adminComponents/Forms/CreateRegister
 export default function JobsDashboard() {   
     const { token, setReload, reload } = useContext(AuthAdminContext)
 
-    const JobsPage = <TableDataComponentized endpoint={endpoints.jobs} columns={JobsColumns} parseRows={JobsParseRows} inputText={'Buscar por ID, autor o título'} selectJobs={true}></TableDataComponentized>;
+    const JobsPage = <div><TableDataComponentized endpoint={endpoints.jobs} columns={JobsColumns} parseRows={JobsParseRows} inputText={'Buscar por ID, autor o título'} selectJobs={true}></TableDataComponentized>;</div>
     const JobsCategoriesPage = 
     <>
         <AdminModal logo={'create category'}><FormCreate endpoint={endpoints.jobsCategories} token={token} properties={['category']}></FormCreate></AdminModal>

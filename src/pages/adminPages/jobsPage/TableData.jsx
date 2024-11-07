@@ -10,6 +10,7 @@ function JobsParseRows(json) {
             title: job.title,
             description: job.description,
             created: job.createdAt,
+            stateForFilter: determinateState(job),
             state: job.finished ? 'cerrado' : 'activo',
             actions: <ActionsButtons id={job._id} type={'jobs'} />
         }
@@ -18,47 +19,56 @@ function JobsParseRows(json) {
     return rows
 }
 
+function determinateState(job) {
+    if (job.finished) {
+        return 'finalizado'
+    } else if (job.finalApplicant) {
+        return 'pendiente'
+    } else {
+        return 'activo'
+    }
+}
 // Columnas para la tabla de Jobs
 const JobsColumns = [
     {
         name: "ID",
         selector: row => row.id,
-        width: '20%',
+        width: '140px',
     },
     {
         name: "Autor",
         selector: row => row.autor,
-        width: '10%'
+        width: '140px'
     },
     {
         name: 'Titulo',
         selector: row => row.title,
         sortable: true,
-        width: '20%'
+        width: '140px'
     },
     {
         name: 'Descripcion',
         sortable: true,
         selector: row => row.description,
-        width: '10%'
+        width: '140px'
     },
     {
         name: 'Publicado',
         sortable: true,
         selector: row => row.created,
-        width: '10%'
+        width: '140px'
     },
     {
         name: 'Estado',
         sortable: true,
         selector: row => row.state,
-        width: '10%'
+        width: '140px'
     },
     {
         name: 'Acciones',
         sortable: true,
         selector: row => row.actions,
-        width: '20%'
+        width: '140px'
     }
 ]
 

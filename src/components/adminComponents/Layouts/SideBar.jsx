@@ -16,7 +16,6 @@ export default function SideBar() {
                 }
                 <OptionBar path={'/auth/admin/jobs'} text={'Ver trabajos'} src={"../../../admin/iconjobs.png"} />            
                 <OptionBar path={'/auth/admin/logs'} text={'Ver logs de admin'} src={"../../../admin/iconlogs.png" } />
-                <OptionBar path={'/auth/admin/profile'} text={'Mi perfil'} src={"../../../admin/user-square.png"} />
         </div>
     )
 }

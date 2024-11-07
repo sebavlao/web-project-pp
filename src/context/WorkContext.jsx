@@ -80,7 +80,7 @@ export const WorkProvider = ({ children }) => {
       try {
     
     
-        const response = await fetch('http://localhost:5120/api/jobs');
+        const response = await fetch('http://:5120/api/jobs');
         const data = await response.json();
 
         setTrabajos(data); 
